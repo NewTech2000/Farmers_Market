@@ -4,9 +4,9 @@ import Ripple from "react-native-material-ripple";
 import { useTheme } from "styled-components";
 import styled from "styled-components/native";
 import PropTypes from "prop-types";
-import { wdp, hdp, getByScreenSize } from "../../utils/responsive";
+import { wdp, hdp, getByScreenSize } from "../../Utils/responsive";
 import TextGeneric from "../TextGeneric";
-import Icon from "../Icon";
+// import Icon from "../../Icon";
 
 const ButtonContainer = styled(Ripple)`
   padding: ${wdp(getByScreenSize(2.2, 0.8))}px;
@@ -24,7 +24,7 @@ const Label = styled(TextGeneric)`
   font-size: ${({ theme }) => theme.text.s8}px;
 `;
 
-const GenericButton = ({
+const Button = ({
   label,
   type,
   round,
@@ -112,9 +112,9 @@ const GenericButton = ({
   );
 };
 
-export default GenericButton;
+export default Button;
 
-GenericButton.propTypes = {
+Button.propTypes = {
   label: PropTypes.string,
   type: PropTypes.string,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
@@ -130,7 +130,7 @@ GenericButton.propTypes = {
   customIcon: PropTypes.func,
 };
 
-GenericButton.defaultProps = {
+Button.defaultProps = {
   label: null,
   type: "solid",
   style: null,
