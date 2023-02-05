@@ -13,7 +13,7 @@ import Loading from '../src/components/Loading/Loading';
 import AuthNavigator from './routes/AuthNavigator';
 import AppNavigator from './routes/AppNavigator';
 import env from './config/config';
-import defaultTheme from './resources/theme';
+import defaultTheme from './assets/resources/theme';
 import styled, {useTheme} from 'styled-components/native';
 
 import {ThemeProvider} from 'styled-components/native';
@@ -60,7 +60,8 @@ const Root = ({
       <PersistGate loading={<Loading />} persistor={persistor}>
         <ThemeProvider theme={defaultTheme}>
           <StatusBar backgroundColor="#FFFF" barStyle="dark-content" />
-          <AppNavigator />
+          {/* <AppNavigator /> */}
+          <AuthNavigator/>
         </ThemeProvider>
       </PersistGate>
     </StoreProvider>

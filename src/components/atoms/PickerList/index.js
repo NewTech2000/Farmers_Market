@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled, { useTheme } from "styled-components/native";
-import Label from "../../Label";
+import Label from "../Label";
 import RNPickerSelect from 'react-native-picker-select';
 import PropTypes from "prop-types";
 import { getByScreenSize } from "../../../utils/responsive";

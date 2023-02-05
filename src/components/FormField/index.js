@@ -6,16 +6,14 @@ import PropTypes from "prop-types";
 import TextGeneric from "../TextGeneric";
 import Ripple from "react-native-material-ripple";
 import { getByScreenSize, hdp } from "../../utils/responsive";
-import Marker from "../Marker";
-import MapboxGL from "@react-native-mapbox-gl/maps";
-import PickerList from "../PickerList";
-import GenericInput from "../Input";
-import Text from "../TextGeneric";
+import PickerList from "../atoms/PickerList";
+import GenericInput from "../atoms/Input";
+import Text from "../TextGeneric/index";
 import CustomDatePicker from "../DatePicker";
-import GenericCheckBox from "../Checkbox";
-import config from "../../config";
+import GenericCheckBox from "../atoms/checkBox";
+import config from "../../config/config";
 import { connect } from "react-redux";
-import { showInfoPopUp } from "../../connected-components/InfoPopUp/actions";
+import { showInfoPopUp } from "../molecule/infoPopup/index";
 import Icon from "../Icon";
 import { Image, View} from "react-native";
 import Picker  from '../SearchableDropDownList';
@@ -156,36 +154,6 @@ const FormField = forwardRef(
                 {...item.props}
               />
             );
-          case "map":
-            return config.MAP_BOX_ACCESS_TOKEN !== "" ? (
-              <MapboxGL.MapView
-                style={{
-                  width: "100%",
-                  height: hdp(30),
-                  overflow: "hidden",
-                  borderRadius: 6,
-                }}
-                logoEnabled={false}
-              >
-                <MapboxGL.Camera zoomLevel={14} centerCoordinate={item.value} />
-                {item.value && (
-                  <MapboxGL.MarkerView
-                    id="map-view"
-                    anchor={{
-                      x: 0.5,
-                      y: 0.5,
-                    }}
-                    draggable={false}
-                    key={JSON.stringify(item.value)}
-                    coordinate={item.value}
-                  >
-                    <Range>
-                      <Marker coordinate={item.value} color={theme.red} />
-                    </Range>
-                  </MapboxGL.MarkerView>
-                )}
-              </MapboxGL.MapView>
-            ) : null;
 
           case "checkbox":
             return (

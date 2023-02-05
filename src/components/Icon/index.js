@@ -24,7 +24,7 @@ import Ripple from 'react-native-material-ripple';
 import { TouchableOpacity, StyleSheet, Animated, Easing } from 'react-native';
 
 import Text from '../TextGeneric';
-import icons from '../../resources/icons/adapter';
+// import icons from '../../resources/icons/adapter';
 
 // https://oblador.github.io/react-native-vector-icons/
 
@@ -252,17 +252,17 @@ const Icon = ({ type, label, onPress, theme, style, role, loading, ...props }) =
                     />
                 );
             case 'SVG':
-                return (
-                    <>
-                        {React.cloneElement(icons[props.name], {
-                            width: props.size,
-                            height: props.size,
-                            fill: props.color,
-                            stroke: props.stroke || props.color,
-                            style,
-                        })}
-                    </>
-                );
+                // return (
+                //     <>
+                //         {React.cloneElement(icons[props.name], {
+                //             width: props.size,
+                //             height: props.size,
+                //             fill: props.color,
+                //             stroke: props.stroke || props.color,
+                //             style,
+                //         })}
+                //     </>
+                // );
             default:
                 return (
                     <AntDesign

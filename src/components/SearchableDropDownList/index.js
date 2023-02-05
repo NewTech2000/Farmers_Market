@@ -2,7 +2,6 @@ import React, {memo, useCallback, useRef, useState, useEffect} from 'react';
 import {Button, Dimensions, Text, View, Platform, LogBox} from 'react-native';
 
 import styled, {useTheme} from 'styled-components/native';
-import Label from '../Label';
 import RNPickerSelect from 'react-native-picker-select';
 import PropTypes from 'prop-types';
 import {getByScreenSize} from '../../utils/responsive';

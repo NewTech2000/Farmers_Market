@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { useTheme } from "styled-components/native";
 import PropTypes from "prop-types";
-import Label from "../Label";
+import Label from "../atoms/Label/index";
 import TextGeneric from "../TextGeneric";
 import { getByScreenSize } from "../../utils/responsive";
 import { formatDate, formatDateTime, formatTime } from "../../utils/date";

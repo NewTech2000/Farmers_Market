@@ -9,7 +9,7 @@ import * as RNLocalize from 'react-native-localize';
 import DismissKeyboard from '../../DismissKeyboard';
 import Text from '../../TextGeneric';
 import Icon from '../../Icon';
-import Label from '../../Label';
+import Label from '../Label';
 import {getByScreenSize} from '../../../utils/responsive';
 
 const Input = styled.TextInput`
