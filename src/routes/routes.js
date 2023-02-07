@@ -1,9 +1,10 @@
 export default Object.freeze({
   //Auth routes
-  LOGIN: "Login",
-  SIGNUP: "Signup",
-  GETSTART: "GetStart",
-  FORGOT_PASSWORD: "ForgotPassword",
-  HOME: "Home",
-  
+  LOGIN: 'Login',
+  SIGNING: 'SignIng',
+  GETSTART: 'GetStart',
+  FORGOT_PASSWORD: 'ForgotPassword',
+  HOME: 'Home',
+  OTP_VERIFICATION: 'OTP Verification',
+  CHANGE_PASSWORD: 'ChangePassword',
 });

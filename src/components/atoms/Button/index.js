@@ -1,10 +1,13 @@
 import React from 'react';
-import {TouchableOpacity, Text} from 'react-native';
+import {TouchableOpacity, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import styled, {useTheme} from 'styled-components/native';
+import {hdp, wdp} from '../../../utils/responsive';
 
 const StyledButton = styled(TouchableOpacity)`
   padding: 15px;
+  width: ${wdp(80)}px;
+  height: ${hdp(5.7)}px;
 `;
 
 const ButtonText = styled.Text`
@@ -13,19 +16,30 @@ const ButtonText = styled.Text`
   text-align: center;
 `;
 
+const Container = styled.View`
+  padding: 1px;
+  border-radius: 5px;
+  shadow-color: #000;
+  shadow-opacity: 1;
+  shadow-radius: 20px;
+  elevation: 8;
+`;
+
 const Button = ({children, onPress, title}) => {
   const theme = useTheme();
   return (
-    <LinearGradient
-      colors={[
-        theme.button.PrimaryBackground,
-        theme.button.secondaryBackground,
-      ]}
-      style={{borderRadius: 10}}>
-      <StyledButton onPress={onPress}>
-        <ButtonText>{title}</ButtonText>
-      </StyledButton>
-    </LinearGradient>
+    <Container>
+      <LinearGradient
+        colors={[
+          theme.button.PrimaryBackground,
+          theme.button.secondaryBackground,
+        ]}
+        style={{borderRadius: 10}}>
+        <StyledButton onPress={onPress}>
+          <ButtonText>{title}</ButtonText>
+        </StyledButton>
+      </LinearGradient>
+    </Container>
   );
 };
 

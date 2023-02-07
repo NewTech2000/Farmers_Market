@@ -151,7 +151,7 @@ const Login = ({navigation}) => {
                         <Text style={{marginBottom: 5, fontSize: 13}}></Text>
                       )}
 
-                      <Ripple>
+                      <Ripple  onPress={()=>navigation.navigate(Routes.FORGOT_PASSWORD)}>
                         <ForgotPasswordText>
                           Forgot Your Password ?{' '}
                         </ForgotPasswordText>

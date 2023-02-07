@@ -50,26 +50,19 @@ const MainContainer = styled.View`
   background-color: ${({theme}) => theme.homeBackground};
   border-radius: 10px;
   width: ${wdp(90)}px;
-  height: ${hdp(45)}px;
+  height: ${hdp(50)}px;
   align-self: center;
-  margin-top: ${hdp(10)}px;
+  margin-top: ${hdp(5)}px;
 `;
 
 const MainContainerText = styled.Text`
   color: ${props => props.color || 'black'};
   font-weight: bold;
-  font-size: 50px;
+  font-size: ${({theme}) => getByScreenSize(theme.text.s1, theme.text.s1)}px;
 `;
 
 const InnerContainer = styled.View`
   padding: 15px;
-`;
-
-const ForgotPasswordText = styled.Text`
-  color: ${({theme}) => theme.text.forgotPasswordTextColor};
-  padding-top: ${hdp(3)}px;
-  font-size: ${({theme}) => getByScreenSize(theme.text.s8, theme.text.s8)}px;
-  font-style: italic;
 `;
 
 const PrivacyPolicyText = styled.Text`
@@ -85,18 +78,20 @@ const PrivacyPolicyText = styled.Text`
 const InputContainer = styled.View`
   padding-top: 20px;
 `;
-const ForgotPassword = ({navigation}) => {
+const ChangePassword = ({navigation}) => {
   const theme = useTheme();
-  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().trim().required().email().label('Email'),
+    password: Yup.string().trim().required().label('Password'),
+    confirmPassword: Yup.string().trim().required().label('Confirm Password'),
   });
 
-  const handleForgotPassword = () => {
+  const handleChangePassword = () => {
     setLoading(true);
-    navigation.navigate(Routes.OTP_VERIFICATION);
+    navigation.navigate(Routes.SIGNING);
     setLoading(false);
   };
 
@@ -110,38 +105,49 @@ const ForgotPassword = ({navigation}) => {
 
           <MainContainer>
             <InnerContainer>
-              <MainContainerText>{String.AUTH.FORGOT_PASSWORD}</MainContainerText>
+              <MainContainerText>{String.AUTH.CHANGE_PASSWORD}</MainContainerText>
               <Formik
                 initialValues={{
-                  email: '',
+                  password: '',
+                  confirmPassword: '',
                 }}
-                onSubmit={handleForgotPassword}
+                onSubmit={handleChangePassword}
                 validationSchema={validationSchema}>
                 {({handleChange, handleSubmit, errors, touched}) => (
                   <>
                     <InputContainer>
                       <Input
-                        label={'E-Mail'}
+                        label={'Password'}
+                        secureTextEntry={true}
                         labelStyle={{fontWeight: '100'}}
-                        onChangeText={handleChange('email')}
-                        placeholder="Enter your email"
-                        textContentType="emailAddress"
-                        autoCapitalize="none"
-                        autoCorrect={false}
+                        onChangeText={handleChange('password')}
+                        placeholder="Enter your password"
+                        textContentType="password"
                       />
-                      {touched.email ? (
-                        <ErrorText>{errors.email}</ErrorText>
+                      {touched.password ? (
+                        <ErrorText>{errors.password}</ErrorText>
                       ) : (
                         <Text style={{marginBottom: 5, fontSize: 13}}></Text>
                       )}
 
-                      <Ripple  onPress={()=>navigation.navigate(Routes.LOGIN)}>
-                        <ForgotPasswordText>Back To Login </ForgotPasswordText>
-                      </Ripple>
+                      <Input
+                        label={' Confirm Password'}
+                        secureTextEntry={true}
+                        labelStyle={{fontWeight: '100'}}
+                        onChangeText={handleChange('confirmPassword')}
+                        placeholder="Confirm your password"
+                        textContentType="password"
+                        showInfo
+                      />
+                      {touched.password ? (
+                        <ErrorText>{errors.confirmPassword}</ErrorText>
+                      ) : (
+                        <Text style={{marginBottom: 5, fontSize: 13}}></Text>
+                      )}
 
                       <ButtonContainer>
                         <Button
-                          title={String.BUTTON.RESET}
+                          title={String.AUTH.CHANGE_PASSWORD}
                           mode="contained"
                           loading={loading}
                           onPress={handleSubmit}
@@ -163,4 +169,4 @@ const ForgotPassword = ({navigation}) => {
   );
 };
 
-export default ForgotPassword;
+export default ChangePassword;

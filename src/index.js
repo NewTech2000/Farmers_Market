@@ -8,7 +8,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {connect} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NetInfo from '@react-native-community/netinfo';
-import Loading from '../src/components/Loading/Loading';
+import Loading from '../src/components/atoms/Loading/Loading';
 
 import AuthNavigator from './routes/AuthNavigator';
 import AppNavigator from './routes/AppNavigator';

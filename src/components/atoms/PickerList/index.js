@@ -1,131 +1,99 @@
-import React, { useEffect, useRef, useState } from "react";
-import styled, { useTheme } from "styled-components/native";
-import Label from "../Label";
-import RNPickerSelect from 'react-native-picker-select';
-import PropTypes from "prop-types";
-import { getByScreenSize } from "../../../utils/responsive";
-import Icon from "../../Icon";
-import { View, Platform } from "react-native";
-import Ripple from "react-native-material-ripple";
+import React, {useEffect, useRef, useState} from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {Picker} from '@react-native-picker/picker';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Container = styled(Platform.OS === 'ios' ? View : Ripple)`
-  flex-direction: column;
-  margin: 0;
-  width: 100%;
-`;
+import styled, {useTheme} from 'styled-components/native';
+import {getByScreenSize} from '../../../utils/responsive';
 
-const PickerContainer = styled.View`
-  width: 100%;
-  background-color: ${({ theme }) => theme.genericInput.colorPrimary};
-  border-radius: 7px;
-  border-color: ${({ theme }) => theme.genericInput.borderPrimary};
-  border-width: 1px;
-  margin-top: 1%;
-`;
-
-const PickerList = ({
+const Dropdown = ({
   label,
   required,
-  list,
-  titleKey,
-  valueKey,
+  items,
   value,
   onValueChange,
-  disabled,
+  info,
   placeholder,
-  ...props
+  selectedVal,
+  disabled,
 }) => {
   const theme = useTheme();
   const pickerRef = useRef();
-  const [selected, setSelected] = useState(value);
   const [pickerFocused, setPickerFocused] = useState(false);
+  const [selectedValue, setSelectedValue] = useState('');
 
   useEffect(() => {
-  if (placeholder!==null) {
-    setSelected(placeholder.value)
-    onValueChange(placeholder.value)
-  }
-  }, [pickerFocused,pickerRef]);
+    if (!selectedValue && items[0]) {
+      setSelectedValue(items[0].value);
+      onValueChange(items[0].value);
+    }
+  }, []);
 
   return (
-    <Container onPress={() => Platform.OS === 'android' && !disabled && pickerRef.current.focus()}>
-      {label && <Label label={label} required={required} />}
-      <PickerContainer>
-        <RNPickerSelect
-          value={selected}
-          disabled={disabled}
-          style={{
-            inputAndroid: {
-              fontSize: getByScreenSize(theme.text.s8, theme.text.s9)
-            },
-            inputIOS: {
-              fontSize: getByScreenSize(theme.text.s8, theme.text.s9)
-            },
-            inputIOSContainer: {
-              height: getByScreenSize(44, 40), justifyContent: 'center', paddingHorizontal: '3%',
-            },
-            inputAndroidContainer: {
-              height: getByScreenSize(44, 40), justifyContent: 'center', paddingHorizontal: '3%',
-            },
-            iconContainer: {
-              right: '3%',
-            },
-          }}
-          onDonePress={() => {
-            const itemIndex = list.findIndex((item) => item === selected);
-            if (onValueChange) onValueChange(selected, itemIndex);
-          }
-          }
-          modalProps={
-            { onRequestClose: () => console.log('close') }
-          }
-          onValueChange={(itemValue) => setSelected(itemValue)}
-          pickerProps={{
-            mode: 'dropdown',
-            ref: pickerRef,
-            onValueChange: (itemValue,) => {
-              setSelected(itemValue);
-              if (Platform.OS === 'android') {
-                const itemIndex = list.findIndex((item) => item === itemValue);
-                if (onValueChange) onValueChange(itemValue, itemIndex);
-              }
-            },
-            style: Platform.OS === 'android' && { height: getByScreenSize(44, 40), bottom: 5 }
-          }}
-          onClose={() => {
-            setPickerFocused(false); const itemIndex = list.findIndex((item) => item === selected);
-            if (onValueChange) onValueChange(selected, itemIndex);
-          }}
-          Icon={() => Platform.OS === 'ios' && <Icon name={'chevron-down'} type={'Entypo'} size={theme.text.s6} color={theme.text.dark} />}
-          placeholder={!pickerFocused ? { label: "--None--", value: null, disabled: true } : {}}
-          items={list.map(item => { return { label: titleKey ? item[titleKey] : item, value: valueKey ? item[valueKey] : item } })}
-        />
-      </PickerContainer>
-    </Container>
+    <View style={styles.container}>
+      <View style={styles.labelContainer}>
+        <Text style={styles.labelText}>{label}</Text>
+        {required && <Text style={styles.requiredText}>*</Text>}
+        {info && (
+          <TouchableOpacity onPress={info}>
+            <Icon name="information" size={20} />
+          </TouchableOpacity>
+        )}
+      </View>
+      <View style={styles.pickerContainer}>
+        <Picker
+          selectedValue={selectedVal ? selectedVal.toString() : selectedValue}
+          onValueChange={(itemValue, itemIndex) => {
+            setSelectedValue(itemValue);
+            onValueChange(itemValue);
+          }}>
+          {items?.map(item => (
+            <Picker.Item
+              key={item.value}
+              label={item.label}
+              value={item.value}
+              color={theme.darkGray}
+            />
+          ))}
+        </Picker>
+      </View>
+    </View>
   );
 };
 
-PickerList.propTypes = {
-  label: PropTypes.string,
-  value: PropTypes.string,
-  placeholder:PropTypes.object,
-  required: PropTypes.bool,
-  list: PropTypes.array.isRequired,
-  titleKey: PropTypes.string,
-  valueKey: PropTypes.string,
-  onValueChange: PropTypes.func,
-  disabled: PropTypes.bool,
-};
+const styles = StyleSheet.create({
+  container: {
+    marginVertical: 1,
+  },
+  labelContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  labelText: {
+    fontSize: 16,
+  },
+  requiredText: {
+    color: 'red',
+    fontSize: 16,
+    marginHorizontal: 5,
+  },
+  pickerContainer: {
+    backgroundColor: 'white',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ddd',
+  },
+  picker: {
+    width: '100%',
+  },
+});
 
-PickerList.defaultProps = {
-  label: null,
-  value: null,
-  placeholder:null,
-  required: false,
-  titleKey: null,
-  valueKey: null,
-  onValueChange: null,
-  disabled: false,
-};
-
-export default PickerList;
+export default Dropdown;
