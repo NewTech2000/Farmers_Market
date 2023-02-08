@@ -96,17 +96,19 @@ const Container = styled.View`
   justify-content: space-between;
   background-color: ${({theme}) => theme.genericInput.colorPrimary};
   border-radius: 7px;
-  border-color: ${({theme}) => theme.genericInput.borderPrimary};
+
   padding-horizontal: 30px;
   min-height: ${getByScreenSize(44, 40)}px;
 `;
 const OtpInput = styled.TextInput`
   width: 50px;
   height: 50px;
-  border-width: 0.5px;
-  border-color: #333;
+  border-color: ${({theme}) => theme.genericInput.borderPrimary};
   border-radius: 4px;
   text-align: center;
+  shadow-color: #000;
+  shadow-opacity: 0.8;
+  elevation: 2;
 `;
 const OTPScreen = ({navigation}) => {
   const theme = useTheme();
