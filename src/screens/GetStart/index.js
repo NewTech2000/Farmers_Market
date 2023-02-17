@@ -2,19 +2,19 @@ import React from 'react';
 import {Image, Text, View} from 'react-native';
 import styled, {useTheme} from 'styled-components/native';
 import String from '../../assets/resources/String';
-import Background from '../../components/BackGround';
+import Background from '../../components/molecule/BackGround/index';
 import Button from '../../components/atoms/Button';
 import Routes from '../../routes/Routes';
 import {getByScreenSize, hdp, wdp} from '../../utils/responsive';
 
 const BackgroundContainer = styled.View`
-  padding: 15px;
+  padding-horizontal: 15px;
 `;
 const Logo = styled(Image)`
-  width: ${wdp(55)}px;
-  height: ${hdp(26)}px;
+  width: ${wdp(18.6)}%;
+  height: ${hdp(3.6)}%;
   align-self: center;
-  margin-top: ${hdp(2)}px;
+  margin-top: ${hdp(2)}%;
 `;
 
 const AppTitle = styled(Text)`
@@ -35,8 +35,8 @@ const AppSubTitle = styled(Text)`
 `;
 
 const ButtonContainer = styled.View`
-  margin-top: ${hdp(20)}px;
-  width: ${wdp(90)}px;
+  margin-top: ${hdp(9)}%;
+  width: ${wdp(23)}%;
   align-self: center;
 `;
 const GetStart = ({navigation}) => {
@@ -51,7 +51,7 @@ const GetStart = ({navigation}) => {
         <ButtonContainer>
           <Button
             title={String.BUTTON.Start}
-            onPress={() => navigation.navigate(Routes.LOGIN)}
+            onPress={() => navigation.navigate(Routes.MAIN_HOME)}
           />
         </ButtonContainer>
       </BackgroundContainer>

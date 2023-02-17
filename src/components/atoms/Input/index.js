@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 import {Platform, TouchableOpacity} from 'react-native';
 import * as RNLocalize from 'react-native-localize';
 
-import DismissKeyboard from '../../DismissKeyboard';
-import Text from '../../TextGeneric';
-import Icon from '../../Icon';
+import DismissKeyboard from '../DismissKeyboard';
+import Text from '../TextGeneric';
+import Icon from '../Icon';
 import Label from '../Label';
 import {getByScreenSize} from '../../../utils/responsive';
 import Ripple from 'react-native-material-ripple';

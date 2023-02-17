@@ -6,14 +6,13 @@ import {hdp, wdp} from '../../../utils/responsive';
 
 const StyledButton = styled(TouchableOpacity)`
   padding: 15px;
-  width: ${wdp(80)}px;
-  height: ${hdp(5.7)}px;
 `;
 
 const ButtonText = styled.Text`
   color: white;
   font-weight: bold;
   text-align: center;
+  justify-content:center;
 `;
 
 const Container = styled.View`

@@ -3,9 +3,11 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 
-import Home from '../screens/Home/index';
 import routes from './Routes';
 import GetStart from '../screens/GetStart';
+import MainDrawer from './TabNavigation';
+import Payment from '../screens/payment';
+
 
 const Stack = createStackNavigator();
 
@@ -13,22 +15,22 @@ const Stack = createStackNavigator();
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{gestureEnabled: true}} initialRouteName={routes.GETSTART}>
+      <Stack.Navigator screenOptions={{gestureEnabled: true}}>
         <Stack.Screen
           options={{
             headerShown: false,
             gestureEnabled: false,
           }}
-          name={routes.HOME}
-          component={Home}
+          name={routes.MAIN_DRAWER}
+          component={MainDrawer}
         />
-        <Stack.Screen
+          <Stack.Screen
           options={{
             headerShown: false,
             gestureEnabled: false,
           }}
-          name={routes.GETSTART}
-          component={GetStart}
+          name={routes.PAYMENT}
+          component={Payment}
         />
       </Stack.Navigator>
     </NavigationContainer>

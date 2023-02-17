@@ -1,8 +1,8 @@
 import React from "react";
 import styled, { useTheme } from "styled-components/native";
-import TextGeneric from "../../TextGeneric";
+import TextGeneric from "../TextGeneric";
 import PropTypes from "prop-types";
-import Icon from "../../Icon";
+import Icon from "../Icon";
 import { getByScreenSize } from "../../../utils/responsive";
 
 const RowView = styled.View`

@@ -59,9 +59,10 @@ const Root = ({
     <StoreProvider store={store}>
       <PersistGate loading={<Loading />} persistor={persistor}>
         <ThemeProvider theme={defaultTheme}>
-          <StatusBar backgroundColor="#FFFF" barStyle="dark-content" />
-          {/* <AppNavigator /> */}
-          <AuthNavigator/>
+          <StatusBar backgroundColor="#FFFF" barStyle="dark-content" /> 
+          {/* <StatusBar backgroundColor='#009933' barStyle="light-content" />  */}
+          <AppNavigator />
+          {/* <AuthNavigator/> */}
         </ThemeProvider>
       </PersistGate>
     </StoreProvider>

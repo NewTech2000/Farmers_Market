@@ -5,6 +5,9 @@ export default Object.freeze({
   GETSTART: 'GetStart',
   FORGOT_PASSWORD: 'ForgotPassword',
   HOME: 'Home',
+  MAIN_HOME: 'MainHome',
+  MAIN_DRAWER: 'Main_Drawer',
   OTP_VERIFICATION: 'OTP Verification',
   CHANGE_PASSWORD: 'ChangePassword',
+  PAYMENT: 'Payment',
 });

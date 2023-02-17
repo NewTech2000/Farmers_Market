@@ -16,12 +16,16 @@ const defaultTheme = {
   secondary: SECONDARY_COLOR,
   generalColor: '#2F9678',
   darkGray: '#535353',
-  lightGray: '#e1e1e1',
+  newButton:'#2E7E8E',
+  lightGray: '#EFEFEF',
   gray: '#A1A1A1',
-  homeBackground: '#FFFFFF',
+  homeBackground: '#ffffff',
   modalBackground: 'rgba(0,0,0,0.5)',
   AppTitle: '#144B3B',
   errorText: '#FF0000',
+  priceColor:'#E67300',
+  userColor:'#002699',
+ 
 
   button: {
     PrimaryBackground: '#A88448',

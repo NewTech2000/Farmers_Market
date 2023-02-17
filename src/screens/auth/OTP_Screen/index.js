@@ -7,13 +7,13 @@ import {Formik} from 'formik';
 import * as Yup from 'yup';
 
 import String from '../../../assets/resources/String';
-import Background from '../../../components/BackGround';
+import Background from '../../../components/molecule/BackGround';
 import Button from '../../../components/atoms/Button';
 import Routes from '../../../routes/Routes';
 import {getByScreenSize, hdp, wdp} from '../../../utils/responsive';
 import Input from '../../../components/atoms/Input';
 import ErrorText from '../../../components/atoms/errorText/errorText';
-import Icon from '../../../components/Icon';
+import Icon from '../../../components/atoms/Icon';
 
 const BackgroundContainer = styled.View`
   padding: 15px;
