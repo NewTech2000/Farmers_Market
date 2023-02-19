@@ -10,4 +10,6 @@ export default Object.freeze({
   OTP_VERIFICATION: 'OTP Verification',
   CHANGE_PASSWORD: 'ChangePassword',
   PAYMENT: 'Payment',
+  PRIVACYPOLICY: 'PrivacyPolicy',
+  ABOUT:"About"
 });

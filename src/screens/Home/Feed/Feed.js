@@ -1,7 +1,6 @@
 import React from 'react';
 import {StatusBar, Text, View} from 'react-native';
-import styled, {withTheme} from 'styled-components/native';
-import {hdp, wdp} from '../../../utils/responsive';
+import styled, {useTheme} from 'styled-components/native';
 
 import HomeItemCard from '../../../components/molecule/HomeItemCard';
 import SearchBar from '../../../components/molecule/SearchBar';
@@ -11,7 +10,8 @@ import {ScrollView} from 'react-native-gesture-handler';
 const MainContainer = styled.View`
   flex: 1;
   flex-direction: column;
-  background-color: white;
+  height: 100%;
+  background-color: ${({theme}) => theme.lightGray};
 `;
 const Container = styled(HomeItemCard)`
   height: 100px;

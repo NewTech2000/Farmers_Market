@@ -3,7 +3,7 @@ import styled, {withTheme} from 'styled-components/native';
 
 const ButtonContainer = styled.TouchableOpacity`
   border-width: 3px;
-  background-color: ${({theme}) => theme.homeBAckground};
+  background-color: ${({theme}) => theme.homeBackground};
   border-radius: 20px;
   padding: 8px;
   width: 150px;

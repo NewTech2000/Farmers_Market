@@ -16,6 +16,7 @@ const Dropdown = ({
   placeholder,
   selectedVal,
   disabled,
+  inputStyle,
 }) => {
   const theme = useTheme();
   const pickerRef = useRef();
@@ -40,7 +41,7 @@ const Dropdown = ({
           </TouchableOpacity>
         )}
       </View>
-      <View style={styles.pickerContainer}>
+      <View style={[styles.pickerContainer,inputStyle]}>
         <Picker
           selectedValue={selectedVal ? selectedVal.toString() : selectedValue}
           onValueChange={(itemValue, itemIndex) => {

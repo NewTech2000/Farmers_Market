@@ -1,4 +1,4 @@
-import React, {forwardRef, useRef, useState} from 'react';
+import React from 'react';
 import styled, {useTheme} from 'styled-components/native';
 import {Avatar} from 'react-native-paper';
 import {getByScreenSize, hdp, wdp} from '../../../utils/responsive';
@@ -7,7 +7,7 @@ import Icon from '../../atoms/Icon';
 const Container = styled.View`
   background-color: ${({theme}) => theme.homeBackground};
   height: 70px;
-  width100%;
+  width: 100%;
 `;
 
 const InnerContainer = styled.TouchableOpacity`

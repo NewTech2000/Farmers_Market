@@ -17,7 +17,8 @@ const defaultTheme = {
   generalColor: '#2F9678',
   darkGray: '#535353',
   newButton:'#2E7E8E',
-  lightGray: '#EFEFEF',
+  lightGray: '#f2f2f2',
+  notificationLightGray:'#b3b3b3',
   gray: '#A1A1A1',
   homeBackground: '#ffffff',
   modalBackground: 'rgba(0,0,0,0.5)',
@@ -25,6 +26,8 @@ const defaultTheme = {
   errorText: '#FF0000',
   priceColor:'#E67300',
   userColor:'#002699',
+  dotColor:'#9B5D1D',
+  star:'#ffcc00',
  
 
   button: {

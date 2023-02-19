@@ -7,6 +7,8 @@ export default Strings = {
     Start: 'Get Start',
     RESET: 'Reset',
     VERIFY: 'Verify',
+    UPDATE: 'Update',
+    OKAY: 'Okay',
   },
   AUTH: {
     LOGIN: 'Login',

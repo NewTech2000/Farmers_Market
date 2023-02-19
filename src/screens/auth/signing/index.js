@@ -250,9 +250,25 @@ const SignIn = ({navigation}) => {
                           placeholder="Enter your Address"
                           autoCapitalize="none"
                           autoCorrect={false}
+                          required={true}
                         />
                         {touched.address ? (
                           <ErrorText>{errors.address}</ErrorText>
+                        ) : (
+                          <Text style={{marginBottom: 5, fontSize: 13}}></Text>
+                        )}
+                        <Input
+                          label={'Postal Code'}
+                          labelStyle={{fontWeight: '100'}}
+                          onChangeText={handleChange('postal')}
+                          placeholder="Enter your Postal code"
+                          autoCapitalize="none"
+                          keyboardType="numeric"
+                          autoCorrect={false}
+                          required={true}
+                        />
+                        {touched.postalCode ? (
+                          <ErrorText>{errors.postalCode}</ErrorText>
                         ) : (
                           <Text style={{marginBottom: 5, fontSize: 13}}></Text>
                         )}
@@ -315,6 +331,7 @@ const SignIn = ({navigation}) => {
                           textContentType="emailAddress"
                           autoCapitalize="none"
                           autoCorrect={false}
+                          required={true}
                         />
                         {touched.email ? (
                           <ErrorText>{errors.email}</ErrorText>
@@ -328,6 +345,7 @@ const SignIn = ({navigation}) => {
                           onChangeText={handleChange('password')}
                           placeholder="Enter your password"
                           textContentType="password"
+                          required={true}
                         />
                         {touched.password ? (
                           <ErrorText>{errors.password}</ErrorText>
@@ -341,6 +359,7 @@ const SignIn = ({navigation}) => {
                           onChangeText={handleChange('confirmPassword')}
                           placeholder="Confirm your password"
                           textContentType="password"
+                          required={true}
                         />
                         {touched.confirmPassword ? (
                           <ErrorText>{errors.confirmPassword}</ErrorText>
@@ -359,7 +378,7 @@ const SignIn = ({navigation}) => {
                     </>
                   )}
                 </Formik>
-                <Ripple  onPress={()=>navigation.navigate(Routes.LOGIN)}>
+                <Ripple onPress={() => navigation.navigate(Routes.LOGIN)}>
                   <AlreadyLoginText>
                     Already have An Account? <LoginText>Login</LoginText>{' '}
                   </AlreadyLoginText>

@@ -8,7 +8,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import TextGeneric from '../../atoms/TextGeneric';
 import BorderButton from '../../atoms/BorderButton/BorderButton';
 
-const Container = styled.TouchableOpacity`
+const Container = styled.View`
   flex: 10;
   height: 100px;
   flex-direction: row;
@@ -64,13 +64,13 @@ const StatusText = styled(TextGeneric)`
   font-size: ${({theme}) => getByScreenSize(theme.text.s8, theme.text.s9)}px;
 `;
 
-const OrderItemCard = ({image, status, orderId, onPress}) => {
+const OrderItemCard = ({image, status, orderId, onPress, UserRole}) => {
   const theme = useTheme();
   return (
     <>
       {status == 'Completed' && (
         <ItemCard>
-          <Container onPress={onPress}>
+          <Container>
             <Images source={require('../../../assets/images/ITM1.jpg')} />
             <Line />
             <InnerContainer>
@@ -79,14 +79,14 @@ const OrderItemCard = ({image, status, orderId, onPress}) => {
                 <TitleText>{'Order'}</TitleText>
                 <CodeText>{'#1252528'}</CodeText>
               </TitleContainer>
-              <BorderButton title={'View Details'} />
+              <BorderButton title={'View Details'} onPress={onPress} />
             </InnerContainer>
           </Container>
         </ItemCard>
       )}
-      {status !== 'Completed' && (
+      {status == 'Pending' && UserRole !== 'Driver' && (
         <ItemCard>
-          <Container onPress={onPress}>
+          <Container>
             <Images source={require('../../../assets/images/ITM1.jpg')} />
             <Line />
             <InnerContainer>
@@ -97,10 +97,33 @@ const OrderItemCard = ({image, status, orderId, onPress}) => {
               <BorderButton
                 style={{marginTop: 10}}
                 title={'Check Order Status'}
+                onPress={onPress}
               />
             </InnerContainer>
           </Container>
         </ItemCard>
+      )}
+
+      {status === 'Pending' && UserRole === 'Driver' ? (
+        <ItemCard>
+          <Container>
+            <Images source={require('../../../assets/images/ITM1.jpg')} />
+            <Line />
+            <InnerContainer>
+              <TitleContainer style={{marginTop: 20}}>
+                <TitleText>{'Order'}</TitleText>
+                <CodeText>{'#1252528'}</CodeText>
+              </TitleContainer>
+              <BorderButton
+                style={{marginTop: 10}}
+                title={'Update Status'}
+                onPress={onPress}
+              />
+            </InnerContainer>
+          </Container>
+        </ItemCard>
+      ) : (
+        <></>
       )}
     </>
   );

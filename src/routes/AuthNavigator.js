@@ -10,6 +10,7 @@ import ForgotPasswordScreen from '../screens/auth/forgot_password/index';
 import ChangePasswordScreen from '../screens/auth/password_change';
 import OTPScreen from '../screens/auth/OTP_Screen/index'
 import Routes from './Routes';
+import PrivacyPolicy from '../screens/PrivacyPolicy';
 
 
 const Stack = createStackNavigator();
@@ -46,6 +47,11 @@ export default function AuthNavigator() {
           <Stack.Screen
           name={Routes.OTP_VERIFICATION}
           component={OTPScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name={Routes.PRIVACYPOLICY}
+          component={PrivacyPolicy}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

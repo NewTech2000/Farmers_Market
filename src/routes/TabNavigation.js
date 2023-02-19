@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Dimensions, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icons from '../components/atoms/Icon/index';
@@ -18,6 +25,9 @@ import ChatScreen from '../screens/Chat/index';
 import Routes from './Routes';
 import GetStart from '../screens/GetStart';
 import {getByScreenSize} from '../utils/responsive';
+import Icon from '../components/atoms/Icon/index';
+import PrivacyPolicy from '../screens/PrivacyPolicy';
+import About from '../screens/About';
 
 const TopTab = createMaterialTopTabNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -35,6 +45,7 @@ const Title = styled.Text`
   font-size: ${({theme}) => getByScreenSize(theme.text.s5, theme.text.s5)}px;
   margin-right: 8px;
   text-align: center;
+  align-self: center;
   margin-top: 2.5%;
   position: absolute;
   margin-left: 35%;
@@ -72,6 +83,49 @@ const Count = styled.Text`
   color: ${({theme}) => theme.primary};
   font-size: ${({theme}) => getByScreenSize(theme.text.s9, theme.text.s9)}px;
   text-align: center;
+`;
+
+const MainDrawerContainer = styled.View`
+  flex: 1;
+  flex-direction: column;
+`;
+const DrawerTopContainer = styled.View`
+  height: 160px;
+  width: 100%;
+  flex-direction: column;
+  background-color: ${({theme}) => theme.primary};
+`;
+const DrawerItemContainer = styled.TouchableOpacity`
+  height: 50px;
+  width: 100%;
+  flex-direction: row;
+  top: 20px;
+`;
+const DrawerItemsContainer = styled.TouchableOpacity`
+  width: 100%;
+  flex-direction: column;
+  top: 30px;
+  right: 15px;
+`;
+const ItemText = styled.Text`
+  color: ${({theme}) => theme.darkGray};
+  font-weight: 600;
+  font-size: ${({theme}) => getByScreenSize(theme.text.s7, theme.text.s7)}px;
+  margin-left: 5px;
+  top: 12px;
+`;
+const Images = styled.Image`
+  width: 100px;
+  height: 78px;
+  align-self: center;
+`;
+
+const Line = styled.View`
+margin-top:50px
+  width: 100%;
+  height: 2px;
+  background-color: ${({theme}) => theme.gray};
+  flex-direction: row;
 `;
 
 const AppHeader = ({
@@ -144,7 +198,14 @@ const HomeTabs = () => {
   return (
     <TopTab.Navigator
       screenOptions={{
-        tabBarIndicatorContainerStyle: {width: 450,marginTop:30, top:20,height:1, borderRadius:2,zIndex:1},
+        tabBarIndicatorContainerStyle: {
+          width: 450,
+          marginTop: 30,
+          top: 20,
+          height: 1,
+          borderRadius: 2,
+          zIndex: 1,
+        },
         tabBarActiveTintColor: theme.homeBackground,
         headerShown: false,
         tabBarLabelStyle: {fontSize: 16, fontWeight: '600'},
@@ -255,7 +316,9 @@ const BottomTabs = () => {
   );
 };
 
-const DrawerScreen = () => {
+const DrawerScreen = ({navigation}) => {
+  const theme = useTheme();
+
   return (
     <Drawer.Navigator
       drawerStyle={{
@@ -267,23 +330,115 @@ const DrawerScreen = () => {
       }}
       initialRouteName={Routes.GETSTART}
       drawerContent={props => (
-        <View style={styles.drawerContainer}>
-          {/* <TouchableOpacity
-            onPress={() => props.navigation.navigate('Home')}
-            style={styles.drawerItem}>
-            <Text>Home</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => props.navigation.navigate('Settings')}
-            style={styles.drawerItem}>
-            <Text>Settings</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => props.navigation.navigate('Profile')}
-            style={styles.drawerItem}>
-            <Text>Profile</Text>
-          </TouchableOpacity> */}
-        </View>
+        <MainDrawerContainer>
+          <DrawerTopContainer>
+            <Images source={require('../assets/images/App_Logo.png')} />
+            <Title style={{paddingTop: 70}}>{'Farmers` Market'}</Title>
+            <Title style={{paddingTop: 95}}>{'Protect Farmer & Crops'}</Title>
+          </DrawerTopContainer>
+          <DrawerItemsContainer>
+            <DrawerItemContainer onPress={() => navigation.navigate('Feed')}>
+              <Icon
+                name={'home'}
+                size={20}
+                type={'AntDesign'}
+                color={theme.darkGray}
+                style={{left: 40, width: 100, top: 15}}
+              />
+              <ItemText>{'Home'}</ItemText>
+            </DrawerItemContainer>
+
+            <DrawerItemContainer>
+              <Icon
+                name={'dots-horizontal-circle-outline'}
+                size={20}
+                type={'MaterialCommunityIcons'}
+                color={theme.darkGray}
+                style={{left: 40, width: 100, top: 15}}
+              />
+              <ItemText>{'Pending Orders (0)'}</ItemText>
+            </DrawerItemContainer>
+
+            <DrawerItemContainer>
+              <Icon
+                name={'timeline'}
+                size={20}
+                type={'MaterialIcons'}
+                color={theme.darkGray}
+                style={{left: 40, width: 100, top: 15}}
+              />
+              <ItemText>{'Pending Payments(0)'}</ItemText>
+            </DrawerItemContainer>
+
+            <DrawerItemContainer>
+              <Icon
+                name={'target'}
+                size={20}
+                type={'Foundation'}
+                color={theme.darkGray}
+                style={{left: 40, width: 100, top: 15}}
+              />
+              <ItemText>{'My Future Goals'}</ItemText>
+            </DrawerItemContainer>
+
+            <DrawerItemContainer>
+              <Icon
+                name={'storefront-outline'}
+                size={20}
+                type={'MaterialCommunityIcons'}
+                color={theme.darkGray}
+                style={{left: 40, width: 100, top: 15}}
+              />
+              <ItemText>{'Favorite'}</ItemText>
+            </DrawerItemContainer>
+            <Line />
+            <DrawerItemContainer>
+              <Icon
+                name={'star-outlined'}
+                size={20}
+                type={'Entypo'}
+                color={theme.darkGray}
+                style={{left: 40, width: 100, top: 15}}
+              />
+              <ItemText>{'Rate Us'}</ItemText>
+            </DrawerItemContainer>
+
+            <DrawerItemContainer
+              onPress={() => navigation.navigate(Routes.ABOUT)}>
+              <Icon
+                name={'ios-information-circle-outline'}
+                size={20}
+                type={'Ionicons'}
+                color={theme.darkGray}
+                style={{left: 40, width: 100, top: 15}}
+              />
+              <ItemText>{'About This App'}</ItemText>
+            </DrawerItemContainer>
+
+            <DrawerItemContainer
+              onPress={() => navigation.navigate(Routes.PRIVACYPOLICY)}>
+              <Icon
+                name={'lock-outline'}
+                size={20}
+                type={'MaterialIcons'}
+                color={theme.darkGray}
+                style={{left: 40, width: 100, top: 15}}
+              />
+              <ItemText>{'Privacy Ans Policy'}</ItemText>
+            </DrawerItemContainer>
+
+            <DrawerItemContainer>
+              <Icon
+                name={'logout'}
+                size={20}
+                type={'AntDesign'}
+                color={theme.errorText}
+                style={{left: 40, width: 100, top: 15}}
+              />
+              <ItemText style={{color: theme.errorText}}>{'Log Out'}</ItemText>
+            </DrawerItemContainer>
+          </DrawerItemsContainer>
+        </MainDrawerContainer>
       )}>
       <Drawer.Screen
         name={Routes.MAIN_HOME}
@@ -299,8 +454,20 @@ const DrawerScreen = () => {
         name={Routes.GETSTART}
         component={GetStart}
       />
-      {/* <Drawer.Screen name="Settings" component={SettingsScreen} /> */}
-      {/* <Drawer.Screen name="Profile" component={ProfileScreen} /> */}
+      <Drawer.Screen
+        options={{
+          header: props => <AppHeader header={'Privacy and Policy'} showMenu />,
+        }}
+        name={Routes.PRIVACYPOLICY}
+        component={PrivacyPolicy}
+      />
+      <Drawer.Screen
+        options={{
+          header: props => <AppHeader header={'About'} showMenu />,
+        }}
+        name={Routes.ABOUT}
+        component={About}
+      />
     </Drawer.Navigator>
   );
 };
