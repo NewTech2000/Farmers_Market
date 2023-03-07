@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, Text, View} from 'react-native';
+import {Image, StatusBar, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import styled, {useTheme} from 'styled-components/native';
 import Ripple from 'react-native-material-ripple';
@@ -98,12 +98,13 @@ const Login = ({navigation}) => {
 
   const handleLogin = () => {
     setLoading(true);
-    navigation.navigate(Routes.SIGNUP);
+    navigation.navigate(Routes.MAIN_HOME);
     setLoading(false);
   };
 
   return (
     <Background>
+      <StatusBar backgroundColor="#FFFF" barStyle="dark-content" />
       <ScrollView>
         <BackgroundContainer>
           <Logo source={require('../../../assets/images/App_Logo.png')} />
@@ -151,7 +152,10 @@ const Login = ({navigation}) => {
                         <Text style={{marginBottom: 5, fontSize: 13}}></Text>
                       )}
 
-                      <Ripple  onPress={()=>navigation.navigate(Routes.FORGOT_PASSWORD)}>
+                      <Ripple
+                        onPress={() =>
+                          navigation.navigate(Routes.FORGOT_PASSWORD)
+                        }>
                         <ForgotPasswordText>
                           Forgot Your Password ?{' '}
                         </ForgotPasswordText>

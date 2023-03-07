@@ -13,6 +13,8 @@ import Icons from '../components/atoms/Icon/index';
 import styled, {useTheme} from 'styled-components/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {useNavigation} from '@react-navigation/native';
+import Icon from '../components/atoms/Icon/index';
+import {getByScreenSize} from '../utils/responsive';
 
 //Import screens
 import FeedScreen from '../screens/Home/Feed/Feed';
@@ -24,8 +26,6 @@ import ChatScreen from '../screens/Chat/index';
 
 import Routes from './Routes';
 import GetStart from '../screens/GetStart';
-import {getByScreenSize} from '../utils/responsive';
-import Icon from '../components/atoms/Icon/index';
 import PrivacyPolicy from '../screens/PrivacyPolicy';
 import About from '../screens/About';
 
@@ -135,12 +135,12 @@ const AppHeader = ({
   showBack,
   showCart,
   showSearch,
-  cartData,
   ...props
 }) => {
   const theme = useTheme();
   const navigation = useNavigation();
   const Drawer = createDrawerNavigator();
+  const [cartData, setCartData] = useState('10');
 
   return (
     <Container>
@@ -181,7 +181,7 @@ const AppHeader = ({
               />
               {cartData && (
                 <CartCountContainer>
-                  <Count>{1225}</Count>
+                  <Count>{cartData}</Count>
                 </CartCountContainer>
               )}
             </>
@@ -427,7 +427,8 @@ const DrawerScreen = ({navigation}) => {
               <ItemText>{'Privacy Ans Policy'}</ItemText>
             </DrawerItemContainer>
 
-            <DrawerItemContainer>
+            <DrawerItemContainer
+              onPress={() => navigation.navigate(Routes.LOGIN)}>
               <Icon
                 name={'logout'}
                 size={20}

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, Text, View} from 'react-native';
+import {Image, StatusBar, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import styled, {useTheme} from 'styled-components/native';
 import Ripple from 'react-native-material-ripple';
@@ -157,6 +157,7 @@ const SignIn = ({navigation}) => {
 
   return (
     <Background>
+      <StatusBar backgroundColor="#FFFF" barStyle="dark-content" />
       <ScrollView>
         <BackgroundContainer>
           <Logo source={require('../../../assets/images/App_Logo.png')} />

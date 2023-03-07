@@ -7,6 +7,7 @@ import routes from './Routes';
 import GetStart from '../screens/GetStart';
 import MainDrawer from './TabNavigation';
 import Payment from '../screens/payment';
+import SingleItem from '../screens/SinglePageItem';
 
 
 const Stack = createStackNavigator();
@@ -15,7 +16,7 @@ const Stack = createStackNavigator();
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{gestureEnabled: true}}>
+      <Stack.Navigator screenOptions={{gestureEnabled: true}} initialRouteName={routes.MAIN_DRAWER}>
         <Stack.Screen
           options={{
             headerShown: false,
@@ -24,13 +25,22 @@ const AppNavigator = () => {
           name={routes.MAIN_DRAWER}
           component={MainDrawer}
         />
-          <Stack.Screen
+        <Stack.Screen
           options={{
             headerShown: false,
             gestureEnabled: false,
           }}
           name={routes.PAYMENT}
           component={Payment}
+        />
+          <Stack.Screen
+          options={{
+            title: 'My home',
+            // headerShown: false,
+            gestureEnabled: false,
+          }}
+          name={routes.SINGLEITEM}
+          component={SingleItem}
         />
       </Stack.Navigator>
     </NavigationContainer>

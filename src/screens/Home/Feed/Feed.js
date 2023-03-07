@@ -6,6 +6,7 @@ import HomeItemCard from '../../../components/molecule/HomeItemCard';
 import SearchBar from '../../../components/molecule/SearchBar';
 import AddPost from '../../../components/molecule/AddPost';
 import {ScrollView} from 'react-native-gesture-handler';
+import Routes from '../../../routes/Routes';
 
 const MainContainer = styled.View`
   flex: 1;
@@ -24,7 +25,7 @@ const BodyContainer = styled.View`
   height: 100%;
   background-color: ${({theme}) => theme.lightGray};
 `;
-const FeedScreen = () => {
+const FeedScreen = ({navigation}) => {
   return (
     <MainContainer>
       <StatusBar backgroundColor="#009933" barStyle="light-content" />
@@ -34,7 +35,7 @@ const FeedScreen = () => {
       </View>
       <ScrollView>
         <BodyContainer>
-          <Container></Container>
+          <Container onPress={()=>navigation.navigate(Routes.SINGLEITEM)}></Container>
           <Container></Container>
           <Container></Container>
           <Container></Container>

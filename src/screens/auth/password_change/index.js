@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, Text, View} from 'react-native';
+import {Image, StatusBar, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import styled, {useTheme} from 'styled-components/native';
 import Ripple from 'react-native-material-ripple';
@@ -97,6 +97,7 @@ const ChangePassword = ({navigation}) => {
 
   return (
     <Background>
+      <StatusBar backgroundColor="#FFFF" barStyle="dark-content" />
       <ScrollView>
         <BackgroundContainer>
           <Logo source={require('../../../assets/images/App_Logo.png')} />
@@ -105,7 +106,9 @@ const ChangePassword = ({navigation}) => {
 
           <MainContainer>
             <InnerContainer>
-              <MainContainerText>{String.AUTH.CHANGE_PASSWORD}</MainContainerText>
+              <MainContainerText>
+                {String.AUTH.CHANGE_PASSWORD}
+              </MainContainerText>
               <Formik
                 initialValues={{
                   password: '',
@@ -123,6 +126,7 @@ const ChangePassword = ({navigation}) => {
                         onChangeText={handleChange('password')}
                         placeholder="Enter your password"
                         textContentType="password"
+                        showInfo
                       />
                       {touched.password ? (
                         <ErrorText>{errors.password}</ErrorText>

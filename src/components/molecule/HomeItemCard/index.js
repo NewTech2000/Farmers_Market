@@ -113,7 +113,7 @@ const HomeItemCard = ({
               color={theme.primary}
               style={{padding: 3, right: 12}}
             />
-            <AddressText>{'Address'}</AddressText>
+            <AddressText>{'Galle'}</AddressText>
           </DetailContainer>
           <DetailContainer>
             <Icon
@@ -124,7 +124,7 @@ const HomeItemCard = ({
               style={{padding: 3, right: 11}}
             />
 
-            <UserText>{'Address'}</UserText>
+            <UserText>{'Kamal'}</UserText>
             <RatingContainer>
               <Icon
                 name={'star-o'}

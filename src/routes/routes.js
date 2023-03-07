@@ -4,12 +4,16 @@ export default Object.freeze({
   SIGNING: 'SignIng',
   GETSTART: 'GetStart',
   FORGOT_PASSWORD: 'ForgotPassword',
+  OTP_VERIFICATION: 'OTP Verification',
+  CHANGE_PASSWORD: 'ChangePassword',
+
   HOME: 'Home',
   MAIN_HOME: 'MainHome',
   MAIN_DRAWER: 'Main_Drawer',
-  OTP_VERIFICATION: 'OTP Verification',
-  CHANGE_PASSWORD: 'ChangePassword',
+
   PAYMENT: 'Payment',
   PRIVACYPOLICY: 'PrivacyPolicy',
-  ABOUT:"About"
+  ABOUT: 'About',
+  APP: 'AppHome',
+  SINGLEITEM: 'SingleItem',
 });

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, Text, View} from 'react-native';
+import {Image, StatusBar, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import styled, {useTheme} from 'styled-components/native';
 import Ripple from 'react-native-material-ripple';
@@ -102,6 +102,7 @@ const ForgotPassword = ({navigation}) => {
 
   return (
     <Background>
+      <StatusBar backgroundColor="#FFFF" barStyle="dark-content" />
       <ScrollView>
         <BackgroundContainer>
           <Logo source={require('../../../assets/images/App_Logo.png')} />
@@ -110,7 +111,9 @@ const ForgotPassword = ({navigation}) => {
 
           <MainContainer>
             <InnerContainer>
-              <MainContainerText>{String.AUTH.FORGOT_PASSWORD}</MainContainerText>
+              <MainContainerText>
+                {String.AUTH.FORGOT_PASSWORD}
+              </MainContainerText>
               <Formik
                 initialValues={{
                   email: '',
@@ -127,6 +130,7 @@ const ForgotPassword = ({navigation}) => {
                         placeholder="Enter your email"
                         textContentType="emailAddress"
                         autoCapitalize="none"
+                        showInfo
                         autoCorrect={false}
                       />
                       {touched.email ? (
@@ -135,7 +139,7 @@ const ForgotPassword = ({navigation}) => {
                         <Text style={{marginBottom: 5, fontSize: 13}}></Text>
                       )}
 
-                      <Ripple  onPress={()=>navigation.navigate(Routes.LOGIN)}>
+                      <Ripple onPress={() => navigation.navigate(Routes.LOGIN)}>
                         <ForgotPasswordText>Back To Login </ForgotPasswordText>
                       </Ripple>
 

@@ -19,7 +19,7 @@ const defaultTheme = {
   newButton:'#2E7E8E',
   lightGray: '#f2f2f2',
   notificationLightGray:'#b3b3b3',
-  gray: '#A1A1A1',
+  gray: '#cccccc',
   homeBackground: '#ffffff',
   modalBackground: 'rgba(0,0,0,0.5)',
   AppTitle: '#144B3B',

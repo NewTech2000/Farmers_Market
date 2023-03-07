@@ -428,7 +428,11 @@ const AppModal = ({
               </StatusRowContainer>
 
               <ButtonContainer>
-                <Button title={String.BUTTON.OKAY} mode="contained" onPress={() => {}} />
+                <Button
+                  title={String.BUTTON.OKAY}
+                  mode="contained"
+                  onPress={() => {}}
+                />
               </ButtonContainer>
             </StatusContainer>
           </MainContainer>

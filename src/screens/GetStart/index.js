@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Text, View} from 'react-native';
+import {Image, StatusBar, Text, View} from 'react-native';
 import styled, {useTheme} from 'styled-components/native';
 import String from '../../assets/resources/String';
 import Background from '../../components/molecule/BackGround/index';
@@ -44,6 +44,7 @@ const GetStart = ({navigation}) => {
 
   return (
     <Background>
+      <StatusBar backgroundColor="#FFFF" barStyle="dark-content" />
       <BackgroundContainer>
         <Logo source={require('../../assets/images/App_Logo.png')} />
         <AppTitle>{String.APP.AppTitle}</AppTitle>

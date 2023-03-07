@@ -11,6 +11,7 @@ import ChangePasswordScreen from '../screens/auth/password_change';
 import OTPScreen from '../screens/auth/OTP_Screen/index'
 import Routes from './Routes';
 import PrivacyPolicy from '../screens/PrivacyPolicy';
+import AppNavigator from './AppNavigator';
 
 
 const Stack = createStackNavigator();
@@ -19,10 +20,15 @@ export default function AuthNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={Routes.OTP_VERIFICATION}
+        initialRouteName={Routes.GETSTART}
         screenOptions={() => ({
-          headerTitleStyle: {color: 'black'},
+          headerTitleStyle: {color: 'black',alignSelf:'center'},
         })}>
+             {/* <Stack.Screen
+          name={Routes.APP}
+          component={AppNavigator}
+          options={{headerShown: false}}
+        /> */}
         <Stack.Screen
           name={Routes.LOGIN}
           component={LoginScreen}
@@ -52,8 +58,8 @@ export default function AuthNavigator() {
         <Stack.Screen
           name={Routes.PRIVACYPOLICY}
           component={PrivacyPolicy}
-          options={{headerShown: false}}
         />
+      
       </Stack.Navigator>
     </NavigationContainer>
   );

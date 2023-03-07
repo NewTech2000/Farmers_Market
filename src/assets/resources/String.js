@@ -9,6 +9,7 @@ export default Strings = {
     VERIFY: 'Verify',
     UPDATE: 'Update',
     OKAY: 'Okay',
+    ADDTOCART: 'Add To  Cart',
   },
   AUTH: {
     LOGIN: 'Login',
