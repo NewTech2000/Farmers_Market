@@ -11,6 +11,7 @@ import NavButton from '../../components/molecule/NavButton';
 import {getByScreenSize, hdp, wdp} from '../../utils/responsive';
 import SaveButton from '../../components/atoms/Button';
 import String from '../../assets/resources/String';
+import Routes from '../../routes/Routes';
 
 const MainContainer = styled.View`
   flex: 1;
@@ -431,7 +432,7 @@ const SingleItem = ({navigation}) => {
               title={String.BUTTON.ADDTOCART}
               mode="contained"
               // loading={loading}
-              // onPress={handleSubmit}
+              onPress={()=>navigation.navigate(Routes.CART)}
             />
           </ButtonContainer>
           {cartData < count && (

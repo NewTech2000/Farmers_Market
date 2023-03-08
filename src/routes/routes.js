@@ -16,4 +16,5 @@ export default Object.freeze({
   ABOUT: 'About',
   APP: 'AppHome',
   SINGLEITEM: 'SingleItem',
+  CART: 'Cart',
 });

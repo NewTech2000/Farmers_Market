@@ -8,6 +8,7 @@ import GetStart from '../screens/GetStart';
 import MainDrawer from './TabNavigation';
 import Payment from '../screens/payment';
 import SingleItem from '../screens/SinglePageItem';
+import Cart from '../screens/Cart';
 
 
 const Stack = createStackNavigator();
@@ -35,12 +36,17 @@ const AppNavigator = () => {
         />
           <Stack.Screen
           options={{
-            title: 'My home',
-            // headerShown: false,
             gestureEnabled: false,
           }}
           name={routes.SINGLEITEM}
           component={SingleItem}
+        />
+         <Stack.Screen
+          options={{
+            gestureEnabled: false,
+          }}
+          name={routes.CART}
+          component={Cart}
         />
       </Stack.Navigator>
     </NavigationContainer>
