@@ -10,6 +10,7 @@ import NavButton from '../../components/molecule/NavButton';
 import {getByScreenSize, hdp, wdp} from '../../utils/responsive';
 import Icon from '../../components/atoms/Icon';
 import CartCard from '../../components/molecule/CartCard';
+import Routes from '../../routes/Routes';
 
 const MainContainer = styled.View`
   flex: 1;
@@ -98,7 +99,7 @@ const Cart = ({navigation}) => {
   const [availableQuantity, setAvailableQuantity] = useState(0);
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: 'Carrot',
+      headerTitle: 'Cart',
       headerStyle: {
         backgroundColor: theme.primary,
       },
@@ -168,7 +169,7 @@ const Cart = ({navigation}) => {
           title={String.BUTTON.PROCESSTODELIVARY}
           mode="contained"
           // loading={loading}
-          // onPress={handleSubmit}
+          onPress={()=>navigation.navigate(Routes.DELIVERY)}
         />
       </ButtonContainer>
     </MainContainer>

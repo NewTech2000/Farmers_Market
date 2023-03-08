@@ -11,6 +11,7 @@ export default Strings = {
     OKAY: 'Okay',
     ADDTOCART: 'Add To  Cart',
     PROCESSTODELIVARY:'Process To Delivary',
+    PROCESSTOPAY:'Process To Pay',
   },
   AUTH: {
     LOGIN: 'Login',

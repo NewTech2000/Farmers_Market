@@ -113,6 +113,7 @@ const DetailsContainer = styled.View`
   padding-top: 10px;
   padding-bottom: 10px;
 `;
+
 const LabelView = styled.View`
   flex-direction: row;
   align-items: flex-end;

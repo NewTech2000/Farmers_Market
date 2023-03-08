@@ -9,7 +9,8 @@ import MainDrawer from './TabNavigation';
 import Payment from '../screens/payment';
 import SingleItem from '../screens/SinglePageItem';
 import Cart from '../screens/Cart';
-
+import Delivery from '../screens/Delivery';
+import DeliveryMethod from '../screens/DelivaryMethod';
 
 const Stack = createStackNavigator();
 
@@ -17,7 +18,9 @@ const Stack = createStackNavigator();
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{gestureEnabled: true}} initialRouteName={routes.MAIN_DRAWER}>
+      <Stack.Navigator
+        screenOptions={{gestureEnabled: true}}
+        initialRouteName={routes.MAIN_DRAWER}>
         <Stack.Screen
           options={{
             headerShown: false,
@@ -34,19 +37,35 @@ const AppNavigator = () => {
           name={routes.PAYMENT}
           component={Payment}
         />
-          <Stack.Screen
+        <Stack.Screen
           options={{
             gestureEnabled: false,
           }}
           name={routes.SINGLEITEM}
           component={SingleItem}
         />
-         <Stack.Screen
+        <Stack.Screen
           options={{
             gestureEnabled: false,
           }}
           name={routes.CART}
           component={Cart}
+        />
+
+        <Stack.Screen
+          options={{
+            gestureEnabled: false,
+          }}
+          name={routes.DELIVERY}
+          component={Delivery}
+        />
+        
+        <Stack.Screen
+          options={{
+            gestureEnabled: false,
+          }}
+          name={routes.DELIVERYMETHOD}
+          component={DeliveryMethod}
         />
       </Stack.Navigator>
     </NavigationContainer>
