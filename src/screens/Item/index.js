@@ -4,6 +4,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import styled, {useTheme} from 'styled-components/native';
 import BorderButton from '../../components/atoms/BorderButton/BorderButton';
 import HomeItemCard from '../../components/molecule/HomeItemCard';
+import Routes from '../../routes/Routes';
 import {getByScreenSize} from '../../utils/responsive';
 
 const MainContainer = styled.View`
@@ -35,7 +36,7 @@ const Title = styled.Text`
   margin-left: 15%;
 `;
 
-export default function ItemScreen() {
+export default function ItemScreen({navigation}) {
   const [user, setUser] = useState('farmer');
   return (
     <MainContainer>
@@ -48,6 +49,7 @@ export default function ItemScreen() {
             position: 'absolute',
           }}
           title={'Add New Item'}
+          onPress={()=>navigation.navigate(Routes.ADDNEWITEM)}
         />
       </AddItemContainer>
       <ScrollView>

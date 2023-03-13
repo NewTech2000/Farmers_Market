@@ -17,4 +17,7 @@ export default Object.freeze({
   APP: 'AppHome',
   SINGLEITEM: 'SingleItem',
   CART: 'Cart',
+  DELIVERY: 'Delivery',
+  DELIVERYMETHOD: 'DeliveryMethod',
+  ADDNEWITEM:'AddNewItem'
 });

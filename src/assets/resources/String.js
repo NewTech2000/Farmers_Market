@@ -10,8 +10,9 @@ export default Strings = {
     UPDATE: 'Update',
     OKAY: 'Okay',
     ADDTOCART: 'Add To  Cart',
-    PROCESSTODELIVARY:'Process To Delivary',
-    PROCESSTOPAY:'Process To Pay',
+    PROCESSTODELIVARY: 'Process To Delivary',
+    PROCESSTOPAY: 'Process To Pay',
+    SAVE: 'Save',
   },
   AUTH: {
     LOGIN: 'Login',

@@ -11,6 +11,7 @@ import SingleItem from '../screens/SinglePageItem';
 import Cart from '../screens/Cart';
 import Delivery from '../screens/Delivery';
 import DeliveryMethod from '../screens/DelivaryMethod';
+import AddNewItem from '../screens/AddNewItem';
 
 const Stack = createStackNavigator();
 
@@ -59,13 +60,21 @@ const AppNavigator = () => {
           name={routes.DELIVERY}
           component={Delivery}
         />
-        
+
         <Stack.Screen
           options={{
             gestureEnabled: false,
           }}
           name={routes.DELIVERYMETHOD}
           component={DeliveryMethod}
+        />
+
+        <Stack.Screen
+          options={{
+            gestureEnabled: false,
+          }}
+          name={routes.ADDNEWITEM}
+          component={AddNewItem}
         />
       </Stack.Navigator>
     </NavigationContainer>
