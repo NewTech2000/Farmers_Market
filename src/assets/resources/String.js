@@ -13,6 +13,8 @@ export default Strings = {
     PROCESSTODELIVARY: 'Process To Delivary',
     PROCESSTOPAY: 'Process To Pay',
     SAVE: 'Save',
+    PROCESSTIOPAY:'Process To Pay',
+    VIEWMYORDER:'View My Order'
   },
   AUTH: {
     LOGIN: 'Login',

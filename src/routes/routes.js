@@ -19,5 +19,6 @@ export default Object.freeze({
   CART: 'Cart',
   DELIVERY: 'Delivery',
   DELIVERYMETHOD: 'DeliveryMethod',
-  ADDNEWITEM:'AddNewItem'
+  ADDNEWITEM: 'AddNewItem',
+  PAYMENTSUCCESS: 'PaymentSuccess',
 });

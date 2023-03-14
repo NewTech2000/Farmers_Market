@@ -164,7 +164,7 @@ const DeliveryMethod = ({navigation}) => {
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: 'DeliveryMethod',
+      headerTitle: 'Delivery Method',
       headerStyle: {
         backgroundColor: theme.primary,
       },
@@ -289,7 +289,7 @@ const DeliveryMethod = ({navigation}) => {
           title={String.BUTTON.PROCESSTOPAY}
           mode="contained"
           // loading={loading}
-          onPress={() => navigation.navigate(Routes.DELIVERYMETHOD)}
+          onPress={() => navigation.navigate(Routes.PAYMENT)}
         />
       </ButtonContainer>
     </MainContainer>

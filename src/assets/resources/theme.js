@@ -29,6 +29,7 @@ const defaultTheme = {
   dotColor: '#9B5D1D',
   star: '#ffcc00',
   dark: '#262626',
+  darkGreen:'#00802b',
 
   button: {
     PrimaryBackground: '#A88448',

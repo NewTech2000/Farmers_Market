@@ -12,6 +12,7 @@ import Cart from '../screens/Cart';
 import Delivery from '../screens/Delivery';
 import DeliveryMethod from '../screens/DelivaryMethod';
 import AddNewItem from '../screens/AddNewItem';
+import PaymentSuccess from '../screens/PaymentSuccess';
 
 const Stack = createStackNavigator();
 
@@ -32,7 +33,6 @@ const AppNavigator = () => {
         />
         <Stack.Screen
           options={{
-            headerShown: false,
             gestureEnabled: false,
           }}
           name={routes.PAYMENT}
@@ -75,6 +75,14 @@ const AppNavigator = () => {
           }}
           name={routes.ADDNEWITEM}
           component={AddNewItem}
+        />
+
+        <Stack.Screen
+          options={{
+            gestureEnabled: false,
+          }}
+          name={routes.PAYMENTSUCCESS}
+          component={PaymentSuccess}
         />
       </Stack.Navigator>
     </NavigationContainer>
