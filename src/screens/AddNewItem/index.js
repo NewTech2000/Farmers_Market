@@ -22,7 +22,7 @@ import ErrorText from '../../components/atoms/errorText/errorText';
 const MainContainer = styled.View`
   flex: 1;
   flex-direction: column;
-  height: 100%;
+
   background-color: ${({theme}) => theme.homeBackground};
 `;
 const BodyContainer = styled.View`
@@ -60,8 +60,7 @@ const InputContainer = styled.View`
 `;
 
 const ButtonContainer = styled.View`
-  position: absolute;
-  margin-bottom:2000px;
+  margin-top: 20px;
   width: ${wdp(95)}px;
   align-self: center;
   padding: 10px;
@@ -123,130 +122,130 @@ const AddNewItem = ({navigation}) => {
   });
 
   const handleAddItem = () => {
-    navigation.navigate(Routes.HOME)
+    navigation.navigate(Routes.HOME);
   };
   return (
     <MainContainer>
       <ScrollView>
-      <BodyContainer>
-        <LabelView>
-          <LabelText style={{}}>{'Item Photos'}</LabelText>
+        <BodyContainer>
+          <LabelView>
+            <LabelText style={{}}>{'Item Photos'}</LabelText>
 
-          <Ripple
-            onPress={() => {
-              if (onInfoPress) {
-                // onInfoPress();
-              } else {
-                // props.showInfoPopUp({
-                //   title: name,
-                //   description: info,
-                // });
-              }
-            }}>
-            <Icon
-              name={'info-with-circle'}
-              type={'Entypo'}
-              size={getByScreenSize(theme.text.s9, theme.text.s9)}
-              color={'black'}
+            <Ripple
+              onPress={() => {
+                if (onInfoPress) {
+                  // onInfoPress();
+                } else {
+                  // props.showInfoPopUp({
+                  //   title: name,
+                  //   description: info,
+                  // });
+                }
+              }}>
+              <Icon
+                name={'info-with-circle'}
+                type={'Entypo'}
+                size={getByScreenSize(theme.text.s9, theme.text.s9)}
+                color={'black'}
+              />
+            </Ripple>
+          </LabelView>
+          <View style={{paddingTop: 20}}>
+            <CameraButton
+              fileNameCode={'item?.Name'}
+              addMultiplePhotos
+              title={'Add new Images'}
+              onChange={images => setImages(images)}
             />
-          </Ripple>
-        </LabelView>
-        <View style={{paddingTop: 20}}>
-          <CameraButton
-            fileNameCode={'item?.Name'}
-            addMultiplePhotos
-            title={'Add new Images'}
-            onChange={images => setImages(images)}
-          />
-        </View>
-      </BodyContainer>
+          </View>
+        </BodyContainer>
 
-      <InputContainer>
-        <Formik
-          initialValues={initialValues}
-          onSubmit={handleAddItem}
-          validationSchema={validationSchema}>
-          {({handleChange, handleSubmit, errors, touched, values}) => (
-            <>
-              <InputContainer>
-                <Input
-                  label={'Item Name'}
-                  labelStyle={{fontWeight: '100'}}
-                  onChangeText={handleChange('itemName')}
-                  placeholder="Enter your Item Name"
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  required={true}
-                  inputStyle={{backgroundColor: theme.gray}}
-                  // disabled={true}
-                  // editable={true}
-                />
-                {touched.itemName ? (
-                  <ErrorText>{errors.itemName}</ErrorText>
-                ) : (
-                  <Text style={{marginBottom: 5, fontSize: 13}}></Text>
-                )}
-                <Input
-                  label={'Item Price'}
-                  labelStyle={{fontWeight: '100'}}
-                  onChangeText={handleChange('itemPrice')}
-                  placeholder="Enter your Item Price"
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  required={true}
-                  inputStyle={{backgroundColor: theme.gray}}
-                />
-                {touched.itemPrice ? (
-                  <ErrorText>{errors.itemPrice}</ErrorText>
-                ) : (
-                  <Text style={{marginBottom: 5, fontSize: 13}}></Text>
-                )}
-
-                <Input
-                  label={'Item Quantity'}
-                  labelStyle={{fontWeight: '100'}}
-                  onChangeText={handleChange('itemQuantity')}
-                  placeholder="Enter your Item Quantity"
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  required={true}
-                  inputStyle={{backgroundColor: theme.gray}}
-                />
-                {touched.itemQuantity ? (
-                  <ErrorText>{errors.itemQuantity}</ErrorText>
-                ) : (
-                  <Text style={{marginBottom: 5, fontSize: 13}}></Text>
-                )}
-
-                <Input
-                  label={'Item Description'}
-                  labelStyle={{fontWeight: '100'}}
-                  onChangeText={handleChange('itemDescription')}
-                  placeholder="Enter your Item Description"
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  required={true}
-                  inputStyle={{backgroundColor: theme.gray}}
-                />
-                {touched.itemDescription ? (
-                  <ErrorText>{errors.itemDescription}</ErrorText>
-                ) : (
-                  <Text style={{marginBottom: 5, fontSize: 13}}></Text>
-                )}
-
-                <ButtonContainer>
-                  <Button
-                    title={String.BUTTON.SAVE}
-                    mode="contained"
-                    loading={loading}
-                    onPress={handleSubmit}
+        <InputContainer>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={handleAddItem}
+            validationSchema={validationSchema}>
+            {({handleChange, handleSubmit, errors, touched, values}) => (
+              <>
+                <InputContainer>
+                  <Input
+                    label={'Item Name'}
+                    labelStyle={{fontWeight: '100'}}
+                    onChangeText={handleChange('itemName')}
+                    placeholder="Enter your Item Name"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    required={true}
+                    inputStyle={{backgroundColor: theme.gray}}
+                    // disabled={true}
+                    // editable={true}
                   />
-                </ButtonContainer>
-              </InputContainer>
-            </>
-          )}
-        </Formik>
-      </InputContainer>
+                  {touched.itemName ? (
+                    <ErrorText>{errors.itemName}</ErrorText>
+                  ) : (
+                    <Text style={{marginBottom: 5, fontSize: 13}}></Text>
+                  )}
+                  <Input
+                    label={'Item Price'}
+                    labelStyle={{fontWeight: '100'}}
+                    onChangeText={handleChange('itemPrice')}
+                    placeholder="Enter your Item Price"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    required={true}
+                    inputStyle={{backgroundColor: theme.gray}}
+                  />
+                  {touched.itemPrice ? (
+                    <ErrorText>{errors.itemPrice}</ErrorText>
+                  ) : (
+                    <Text style={{marginBottom: 5, fontSize: 13}}></Text>
+                  )}
+
+                  <Input
+                    label={'Item Quantity'}
+                    labelStyle={{fontWeight: '100'}}
+                    onChangeText={handleChange('itemQuantity')}
+                    placeholder="Enter your Item Quantity"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    required={true}
+                    inputStyle={{backgroundColor: theme.gray}}
+                  />
+                  {touched.itemQuantity ? (
+                    <ErrorText>{errors.itemQuantity}</ErrorText>
+                  ) : (
+                    <Text style={{marginBottom: 5, fontSize: 13}}></Text>
+                  )}
+
+                  <Input
+                    label={'Item Description'}
+                    labelStyle={{fontWeight: '100'}}
+                    onChangeText={handleChange('itemDescription')}
+                    placeholder="Enter your Item Description"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    required={true}
+                    inputStyle={{backgroundColor: theme.gray}}
+                  />
+                  {touched.itemDescription ? (
+                    <ErrorText>{errors.itemDescription}</ErrorText>
+                  ) : (
+                    <Text style={{marginBottom: 5, fontSize: 13}}></Text>
+                  )}
+
+                  <ButtonContainer>
+                    <Button
+                      title={String.BUTTON.SAVE}
+                      mode="contained"
+                      loading={loading}
+                      onPress={handleSubmit}
+                    />
+                  </ButtonContainer>
+                </InputContainer>
+              </>
+            )}
+          </Formik>
+        </InputContainer>
       </ScrollView>
     </MainContainer>
   );
