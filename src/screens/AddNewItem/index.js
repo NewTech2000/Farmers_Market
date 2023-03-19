@@ -61,7 +61,7 @@ const InputContainer = styled.View`
 
 const ButtonContainer = styled.View`
   position: absolute;
-  bottom:2px
+  margin-bottom:2000px;
   width: ${wdp(95)}px;
   align-self: center;
   padding: 10px;
@@ -113,18 +113,21 @@ const AddNewItem = ({navigation}) => {
     itemPrice: Yup.string().trim().required().label('Item Price'),
     itemQuantity: Yup.string().trim().required().label('Item Quantity'),
     itemDescription: Yup.string().trim().required().label('Item Description'),
-    photo: Yup
-      .mixed()
-      .required('A photo is required')
-      .test('fileType', 'Only JPG or PNG format allowed', value => {
-        if (!value) return true;
-        return ['image/jpeg', 'image/png'].includes(value.type);
-      }),
+    // photo: Yup
+    //   .mixed()
+    //   .required('A photo is required')
+    //   .test('fileType', 'Only JPG or PNG format allowed', value => {
+    //     if (!value) return true;
+    //     return ['image/jpeg', 'image/png'].includes(value.type);
+    //   }),
   });
 
-  const handleAddItem = () => {};
+  const handleAddItem = () => {
+    navigation.navigate(Routes.HOME)
+  };
   return (
     <MainContainer>
+      <ScrollView>
       <BodyContainer>
         <LabelView>
           <LabelText style={{}}>{'Item Photos'}</LabelText>
@@ -202,7 +205,7 @@ const AddNewItem = ({navigation}) => {
                 <Input
                   label={'Item Quantity'}
                   labelStyle={{fontWeight: '100'}}
-                  onChangeText={handleChange('itemPrice')}
+                  onChangeText={handleChange('itemQuantity')}
                   placeholder="Enter your Item Quantity"
                   autoCapitalize="none"
                   autoCorrect={false}
@@ -244,6 +247,7 @@ const AddNewItem = ({navigation}) => {
           )}
         </Formik>
       </InputContainer>
+      </ScrollView>
     </MainContainer>
   );
 };

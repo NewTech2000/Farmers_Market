@@ -21,4 +21,5 @@ export default Object.freeze({
   DELIVERYMETHOD: 'DeliveryMethod',
   ADDNEWITEM: 'AddNewItem',
   PAYMENTSUCCESS: 'PaymentSuccess',
+  ORDERDETAILS: 'OrderDetails',
 });

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import Modal from 'react-native-modal';
 import styled, {useTheme} from 'styled-components/native';
 import String from '../../../assets/resources/String';
@@ -105,13 +106,14 @@ const SubTitleText = styled(TextGeneric)`
 const StatusContainer = styled.View`
   flex: 1;
   flex-direction: column;
-  padding-top: 15%;
+  padding-top: 5%;
 `;
 
 const StatusRowContainer = styled.View`
   flex-direction: row;
   text-align: center;
   align-self: center;
+  padding-top: 5%;
 `;
 
 const StatusText = styled(TextGeneric)`
@@ -120,6 +122,7 @@ const StatusText = styled(TextGeneric)`
   font-weight: bold;
   font-size: ${({theme}) => getByScreenSize(theme.text.s8, theme.text.s8)}px;
   top: 10px;
+  width: 180px;
 `;
 
 const ButtonContainer = styled.View`
@@ -127,6 +130,21 @@ const ButtonContainer = styled.View`
   width: ${wdp(90)}px;
   align-self: center;
   padding: 20px;
+  bottom: 20px;
+`;
+
+const DescriptionText = styled(TextGeneric)`
+  color: ${({theme}) => theme.darkGray};
+  font-size: ${({theme}) => getByScreenSize(theme.text.s8, theme.text.s8)}px;
+  padding-left: 125px;
+  top: 5px;
+`;
+
+const ViewMoreText = styled(TextGeneric)`
+  color: ${({theme}) => theme.priceColor};
+  font-size: ${({theme}) => getByScreenSize(theme.text.s8, theme.text.s8)}px;
+  text-align:center
+  padding-top: 50px;
 `;
 
 const AppModal = ({
@@ -138,6 +156,7 @@ const AppModal = ({
   images,
   userRole,
   title,
+  ViewMoreOnPress,
 }) => {
   const theme = useTheme();
 
@@ -331,109 +350,118 @@ const AppModal = ({
             </SubTitleText>
 
             <StatusContainer>
-              <StatusRowContainer>
-                <Icon
-                  name={'check'}
-                  size={30}
-                  type={'Entypo'}
-                  color={theme.newButton}
-                  style={{
-                    height: 60,
-                    top: 5,
-                    alignSelf: 'flex-start',
-                    right: 30,
-                  }}
-                />
-                <StatusText>{'On The Way To Pickup'}</StatusText>
-              </StatusRowContainer>
-              <StatusRowContainer>
-                <Icon
-                  name={'check'}
-                  size={30}
-                  type={'Entypo'}
-                  color={theme.newButton}
-                  style={{
-                    height: 60,
-                    top: 5,
-                    alignSelf: 'flex-start',
-                    right: 60,
-                  }}
-                />
+              <ScrollView>
+                <StatusRowContainer>
+                  <Icon
+                    name={'check'}
+                    size={30}
+                    type={'Entypo'}
+                    color={theme.newButton}
+                    style={{
+                      top: 5,
+                      alignSelf: 'flex-start',
+                      right: 40,
+                    }}
+                  />
+                  <StatusText>{'On The Way To Pickup'}</StatusText>
+                </StatusRowContainer>
+                <DescriptionText>{'2023.02.03- 08.35.22 am'}</DescriptionText>
 
-                <StatusText>{'Order Picked'}</StatusText>
-              </StatusRowContainer>
+                <StatusRowContainer>
+                  <Icon
+                    name={'check'}
+                    size={30}
+                    type={'Entypo'}
+                    color={theme.newButton}
+                    style={{
+                      top: 5,
+                      alignSelf: 'flex-start',
+                      right: 40,
+                    }}
+                  />
 
-              <StatusRowContainer>
-                <Icon
-                  name={'check'}
-                  size={30}
-                  type={'Entypo'}
-                  color={theme.newButton}
-                  style={{
-                    height: 60,
-                    top: 5,
-                    alignSelf: 'flex-start',
-                    right: 60,
-                  }}
-                />
-                <StatusText>{'Order Picked'}</StatusText>
-              </StatusRowContainer>
+                  <StatusText>{'Package Is Ready'}</StatusText>
+                </StatusRowContainer>
+                <DescriptionText>{'2023.02.03- 08.35.22 am'}</DescriptionText>
 
-              <StatusRowContainer>
-                <Icon
-                  name={'check'}
-                  size={30}
-                  type={'Entypo'}
-                  color={theme.gray}
-                  style={{
-                    height: 60,
-                    top: 5,
-                    alignSelf: 'flex-start',
-                    right: 60,
-                  }}
-                />
-                <StatusText>{'Order Picked'}</StatusText>
-              </StatusRowContainer>
+                <StatusRowContainer>
+                  <Icon
+                    name={'check'}
+                    size={30}
+                    type={'Entypo'}
+                    color={theme.newButton}
+                    style={{
+                      top: 5,
+                      alignSelf: 'flex-start',
+                      right: 40,
+                    }}
+                  />
+                  <StatusText>{'Package Is Ready To Pick Up'}</StatusText>
+                </StatusRowContainer>
+                <DescriptionText>{'2023.02.03- 08.35.22 am'}</DescriptionText>
 
-              <StatusRowContainer>
-                <Icon
-                  name={'check'}
-                  size={30}
-                  type={'Entypo'}
-                  color={theme.gray}
-                  style={{
-                    height: 60,
-                    top: 5,
-                    alignSelf: 'flex-start',
-                    right: 60,
-                  }}
-                />
-                <StatusText>{'Order Picked'}</StatusText>
-              </StatusRowContainer>
+                <StatusRowContainer>
+                  <Icon
+                    name={'check'}
+                    size={30}
+                    type={'Entypo'}
+                    color={theme.gray}
+                    style={{
+                      top: 5,
+                      alignSelf: 'flex-start',
+                      right: 40,
+                    }}
+                  />
+                  <StatusText>{'Order Picked'}</StatusText>
+                </StatusRowContainer>
+                <DescriptionText>{'2023.02.03- 08.35.22 am'}</DescriptionText>
+                <DescriptionText>
+                  {'Picked By: sunil , TP- 0766028355'}
+                </DescriptionText>
 
-              <StatusRowContainer>
-                <Icon
-                  name={'check'}
-                  size={30}
-                  type={'Entypo'}
-                  color={theme.gray}
-                  style={{
-                    height: 60,
-                    top: 5,
-                    alignSelf: 'flex-start',
-                    right: 60,
-                  }}
-                />
-                <StatusText>{'Order Picked'}</StatusText>
-              </StatusRowContainer>
+                <StatusRowContainer>
+                  <Icon
+                    name={'check'}
+                    size={30}
+                    type={'Entypo'}
+                    color={theme.gray}
+                    style={{
+                      top: 5,
+                      alignSelf: 'flex-start',
+                      right: 40,
+                    }}
+                  />
+                  <StatusText>{'Order Delivered'}</StatusText>
+                </StatusRowContainer>
+                <DescriptionText>{'2023.02.03- 08.35.22 am'}</DescriptionText>
 
-              <ButtonContainer>
-                <Button
-                  title={String.BUTTON.OKAY}
-                  mode="contained"
-                  onPress={() => {}}
-                />
-              </ButtonContainer>
+                <StatusRowContainer>
+                  <Icon
+                    name={'check'}
+                    size={30}
+                    type={'Entypo'}
+                    color={theme.gray}
+                    style={{
+                      top: 5,
+                      alignSelf: 'flex-start',
+                      right: 40,
+                    }}
+                  />
+                  <StatusText>{'Collect Money and Order Complete'}</StatusText>
+                </StatusRowContainer>
+                <DescriptionText>{'2023.02.03- 08.35.22 am'}</DescriptionText>
+
+                <TouchableOpacity onPress={ViewMoreOnPress}>
+                  <ViewMoreText>{'View Order Details'}</ViewMoreText>
+                </TouchableOpacity>
+                <ButtonContainer>
+                  <Button
+                    title={String.BUTTON.OKAY}
+                    mode="contained"
+                    onPress={() => {}}
+                  />
+                </ButtonContainer>
+              </ScrollView>
             </StatusContainer>
           </MainContainer>
         )}
@@ -476,7 +504,7 @@ const AppModal = ({
                   size={30}
                   type={'Entypo'}
                   color={theme.darkGray}
-                  style={{height: 60, top: 5, alignSelf: 'flex-end', left: 50}}
+                  style={{height: 60, top: 5, alignSelf: 'flex-end', left: 40}}
                 />
               </StatusRowContainer>
               <StatusRowContainer>
@@ -489,7 +517,7 @@ const AppModal = ({
                     height: 60,
                     top: 5,
                     alignSelf: 'flex-start',
-                    right: 60,
+                    right: 35,
                   }}
                 />
 
@@ -500,7 +528,7 @@ const AppModal = ({
                   size={30}
                   type={'Entypo'}
                   color={theme.darkGray}
-                  style={{height: 60, top: 5, alignSelf: 'flex-end', left: 80}}
+                  style={{height: 60, top: 5, alignSelf: 'flex-end', left: 40}}
                 />
               </StatusRowContainer>
 
@@ -514,7 +542,7 @@ const AppModal = ({
                     height: 60,
                     top: 5,
                     alignSelf: 'flex-start',
-                    right: 60,
+                    right: 35,
                   }}
                 />
                 <StatusText>{'Order Picked'}</StatusText>
@@ -524,7 +552,7 @@ const AppModal = ({
                   size={30}
                   type={'Entypo'}
                   color={theme.darkGray}
-                  style={{height: 60, top: 5, alignSelf: 'flex-end', left: 80}}
+                  style={{height: 60, top: 5, alignSelf: 'flex-end', left: 40}}
                 />
               </StatusRowContainer>
 
@@ -538,7 +566,7 @@ const AppModal = ({
                     height: 60,
                     top: 5,
                     alignSelf: 'flex-start',
-                    right: 60,
+                    right: 35,
                   }}
                 />
                 <StatusText>{'Order Picked'}</StatusText>
@@ -548,7 +576,7 @@ const AppModal = ({
                   size={30}
                   type={'Entypo'}
                   color={theme.darkGray}
-                  style={{height: 60, top: 5, alignSelf: 'flex-end', left: 80}}
+                  style={{height: 60, top: 5, alignSelf: 'flex-end', left: 40}}
                 />
               </StatusRowContainer>
 
@@ -562,7 +590,7 @@ const AppModal = ({
                     height: 60,
                     top: 5,
                     alignSelf: 'flex-start',
-                    right: 60,
+                    right: 35,
                   }}
                 />
                 <StatusText>{'Order Picked'}</StatusText>
@@ -572,7 +600,7 @@ const AppModal = ({
                   size={30}
                   type={'Entypo'}
                   color={theme.darkGray}
-                  style={{height: 60, top: 5, alignSelf: 'flex-end', left: 80}}
+                  style={{height: 60, top: 5, alignSelf: 'flex-end', left: 40}}
                 />
               </StatusRowContainer>
 
@@ -586,7 +614,7 @@ const AppModal = ({
                     height: 60,
                     top: 5,
                     alignSelf: 'flex-start',
-                    right: 60,
+                    right: 30,
                   }}
                 />
                 <StatusText>{'Order Picked'}</StatusText>
@@ -596,7 +624,7 @@ const AppModal = ({
                   size={30}
                   type={'Entypo'}
                   color={theme.darkGray}
-                  style={{height: 60, top: 5, alignSelf: 'flex-end', left: 80}}
+                  style={{height: 60, top: 5, alignSelf: 'flex-end', left: 40}}
                 />
               </StatusRowContainer>
 

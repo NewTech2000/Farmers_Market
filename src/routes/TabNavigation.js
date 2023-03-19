@@ -361,13 +361,24 @@ const DrawerScreen = ({navigation}) => {
 
             <DrawerItemContainer>
               <Icon
-                name={'timeline'}
+                name={'payment'}
                 size={20}
                 type={'MaterialIcons'}
                 color={theme.darkGray}
                 style={{left: 40, width: 100, top: 15}}
               />
               <ItemText>{'Pending Payments(0)'}</ItemText>
+            </DrawerItemContainer>
+
+            <DrawerItemContainer>
+              <Icon
+                name={'finance'}
+                size={20}
+                type={'MaterialCommunityIcons'}
+                color={theme.darkGray}
+                style={{left: 40, width: 100, top: 15}}
+              />
+              <ItemText>{'Finance Details'}</ItemText>
             </DrawerItemContainer>
 
             <DrawerItemContainer>

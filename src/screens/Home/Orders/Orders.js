@@ -5,6 +5,7 @@ import styled, {useTheme} from 'styled-components/native';
 import AppModal from '../../../components/molecule/Model';
 import OrderItemCard from '../../../components/molecule/OrderItemCard';
 import SearchBar from '../../../components/molecule/SearchBar';
+import Routes from '../../../routes/Routes';
 
 const MainContainer = styled.View`
   flex: 1;
@@ -18,12 +19,12 @@ const Container = styled.View`
 `;
 
 const BodyContainer = styled.View`
-flex: 1;
-padding-top: 10px;
-padding-bottom: 90px;
+  flex: 1;
+  padding-top: 10px;
+  padding-bottom: 90px;
 `;
 
-const OrdersScreen = () => {
+const OrdersScreen = ({navigation}) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [correctModel, setCorrectModel] = useState('');
 
@@ -66,6 +67,7 @@ const OrdersScreen = () => {
             isModalVisible={isModalVisible}
             onBackdropPress={() => setModalVisible(false)}
             closeOnPress={() => setModalVisible(false)}
+            ViewMoreOnPress={() => navigation.navigate(Routes.ORDERDETAILS)}
           />
         </BodyContainer>
       </ScrollView>

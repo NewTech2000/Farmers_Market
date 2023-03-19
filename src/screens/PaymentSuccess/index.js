@@ -125,7 +125,7 @@ const PaymentSuccess = ({navigation}) => {
           title={String.BUTTON.VIEWMYORDER}
           mode="contained"
           // loading={loading}
-          onPress={() => navigation.navigate(Routes.HOME)}
+          onPress={() => navigation.navigate(Routes.ORDERDETAILS)}
         />
       </ButtonContainer>
     </MainContainer>
