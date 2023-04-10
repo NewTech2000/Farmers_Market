@@ -10,6 +10,8 @@ export default Object.freeze({
   HOME: 'Home',
   MAIN_HOME: 'MainHome',
   MAIN_DRAWER: 'Main_Drawer',
+  FUTUREGOALS:'FutureGoals',
+  FINANCIALGOALS:'FinancialGoals',
 
   PAYMENT: 'Payment',
   PRIVACYPOLICY: 'PrivacyPolicy',

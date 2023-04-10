@@ -9,6 +9,9 @@ import {getByScreenSize, hdp, wdp} from '../../../utils/responsive';
 import Button from '../../atoms/Button';
 import Icon from '../../atoms/Icon';
 import TextGeneric from '../../atoms/TextGeneric';
+import CustomDatePicker from '../../atoms/DatePicker';
+import {TextInput} from 'react-native';
+import {Switch} from 'react-native-paper';
 
 const MainContainer = styled.View`
   flex-direction: column;
@@ -147,6 +150,126 @@ const ViewMoreText = styled(TextGeneric)`
   padding-top: 50px;
 `;
 
+const DateRow = styled.View`
+  flex: 1;
+  flex-direction: row;
+`;
+
+const DateContainer = styled.View`
+  width: ${wdp(35)}px;
+  left: 20px;
+`;
+
+const TopDataContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  padding-left: 120px;
+  padding-top: 50px;
+  // position: absolute;
+`;
+
+const TopDescriptionText = styled(TextGeneric)`
+  color: ${({theme}) => theme.darkGray};
+  font-size: ${({theme}) => getByScreenSize(theme.text.s8, theme.text.s8)}px;
+  padding-left: 35px;
+  top: 5px;
+`;
+
+const FinanceDataContainRow = styled.View`
+  flex: 1;
+  flex-direction: row;
+  height: 50px;
+`;
+
+const FinanceBodyContainRow = styled.View`
+  flex: 30;
+  top: 20px;
+`;
+const FinanceItemText = styled(TextGeneric)`
+  color: ${({theme}) => theme.text.textPrimary};
+  font-weight: bold;
+  font-size: ${({theme}) => getByScreenSize(theme.text.s8, theme.text.s8)}px;
+  left: 50px;
+`;
+
+const CostInput = styled.TextInput`
+  width: 100px;
+  height: 40px;
+  border-color: ${({theme}) => theme.genericInput.borderPrimary};
+  border-radius: 4px;
+  text-align: center;
+  shadow-color: #000;
+  shadow-opacity: 0.8;
+  elevation: 2;
+  bottom: 10px;
+  margin-right: 10px;
+  flex: 2;
+`;
+
+const CostInputContainer = styled.View`
+  flex: 3;
+  flex-direction: row;
+  padding-left: 100px;
+`;
+
+const AddCardInput = styled.TextInput`
+  width: 350px;
+  height: 50px;
+  border-color: ${({theme}) => theme.genericInput.borderPrimary};
+  border-radius: 4px;
+  text-align: center;
+  shadow-color: #000;
+  shadow-opacity: 0.8;
+  elevation: 2;
+  margin-top: 20px;
+  margin-right: 10px;
+  flex: 2;
+  border-radius: 30px;
+`;
+
+const AddCardBody = styled.View`
+  flex: 3;
+  flex-direction: column;
+  padding-left: 10px;
+  margin-top: 50px;
+  align-self: center;
+`;
+
+const AddCardButtonContainer = styled.TouchableOpacity`
+  height: 50px;
+  width: ${wdp(88)}px;
+  border-radius: 50px;
+  border-color: ${({theme}) => theme.darkGray};
+  background-color: ${({theme}) => theme.newButton};
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  flex-direction: row;
+  align-self: center;
+  margin-top: 10px;
+`;
+
+const AddCardButtonText = styled.Text`
+  font-size: 14px;
+  font-weight: 700;
+  color: ${({theme}) => theme.homeBackground};
+  padding: 15px 25px;
+`;
+
+const ToggleContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  padding: 40px;
+`;
+
+const ToggleContentText = styled(TextGeneric)`
+  color: ${({theme}) => theme.acmCard.content};
+  font-size: ${({theme}) => getByScreenSize(theme.text.s9, theme.text.s10)}px;
+  flex-wrap: wrap;
+  top: 5px;
+`;
+
+const NextText = styled.Text``;
 const AppModal = ({
   modelName,
   toggleModal,
@@ -159,7 +282,9 @@ const AppModal = ({
   ViewMoreOnPress,
 }) => {
   const theme = useTheme();
+  const [isSwitchOn, setIsSwitchOn] = React.useState(false);
 
+  const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
   return (
     <View style={{flex: 1}}>
       {/* <Button title="Show modal" onPress={toggleModal} /> */}
@@ -632,6 +757,150 @@ const AppModal = ({
                 <Button title={'Save'} mode="contained" onPress={() => {}} />
               </ButtonContainer>
             </StatusContainer>
+          </MainContainer>
+        )}
+
+        {modelName === 'EditFinanceDetails' && (
+          <MainContainer>
+            <Line />
+            <TouchableOpacity onPress={closeOnPress}>
+              <Icon
+                name={'closecircle'}
+                size={25}
+                type={'AntDesign'}
+                color={theme.darkGray}
+                style={{left: 340, paddingTop: 3}}
+              />
+            </TouchableOpacity>
+            <ScrollView>
+              <DateRow>
+                <StatusText>{'Edit this Finance Details For'}</StatusText>
+                <DateContainer>
+                  <CustomDatePicker
+                    label={'For'}
+                    required={true}
+                    defaultValue={'2023-04-30'}
+                  />
+                </DateContainer>
+              </DateRow>
+
+              <TopDataContainer>
+                <TopDescriptionText>{'Bought-Price'}</TopDescriptionText>
+                <TopDescriptionText>{'Selling-Price'}</TopDescriptionText>
+              </TopDataContainer>
+
+              <FinanceBodyContainRow>
+                <FinanceDataContainRow>
+                  <FinanceItemText>{'Banana'}</FinanceItemText>
+                  <CostInputContainer>
+                    <CostInput />
+                    <CostInput />
+                  </CostInputContainer>
+                </FinanceDataContainRow>
+
+                <FinanceDataContainRow>
+                  <FinanceItemText>{'Carrot'}</FinanceItemText>
+                  <CostInputContainer>
+                    <CostInput />
+                    <CostInput />
+                  </CostInputContainer>
+                </FinanceDataContainRow>
+
+                <FinanceDataContainRow>
+                  <FinanceItemText>{'Apple'}</FinanceItemText>
+                  <CostInputContainer>
+                    <CostInput />
+                    <CostInput />
+                  </CostInputContainer>
+                </FinanceDataContainRow>
+
+                <FinanceDataContainRow>
+                  <FinanceItemText>{'Orange'}</FinanceItemText>
+                  <CostInputContainer>
+                    <CostInput />
+                    <CostInput />
+                  </CostInputContainer>
+                </FinanceDataContainRow>
+
+                <FinanceDataContainRow>
+                  <FinanceItemText>{'Profit'}</FinanceItemText>
+                  <CostInputContainer>
+                    <CostInput />
+                    <CostInput />
+                  </CostInputContainer>
+                </FinanceDataContainRow>
+
+                <FinanceDataContainRow>
+                  <FinanceItemText>{'Loss'}</FinanceItemText>
+                  <CostInputContainer>
+                    <CostInput />
+                  </CostInputContainer>
+                </FinanceDataContainRow>
+
+                <FinanceDataContainRow>
+                  <FinanceItemText>{'Additional Profit'}</FinanceItemText>
+                  <CostInputContainer>
+                    <CostInput />
+                  </CostInputContainer>
+                </FinanceDataContainRow>
+
+                <FinanceDataContainRow>
+                  <FinanceItemText>{'Total'}</FinanceItemText>
+                  <CostInputContainer>
+                    <CostInput disabled={true} defaultValue={'225'} />
+                  </CostInputContainer>
+                </FinanceDataContainRow>
+              </FinanceBodyContainRow>
+
+              <ButtonContainer>
+                <Button title={'Save'} mode="contained" onPress={() => {}} />
+              </ButtonContainer>
+            </ScrollView>
+          </MainContainer>
+        )}
+
+        {modelName === 'AddCard' && (
+          <MainContainer>
+            <Line />
+            <TouchableOpacity onPress={closeOnPress}>
+              <Icon
+                name={'closecircle'}
+                size={25}
+                type={'AntDesign'}
+                color={theme.darkGray}
+                style={{left: 340, paddingTop: 3}}
+              />
+            </TouchableOpacity>
+
+            <StatusText>{'Add Credit/Debit Card'}</StatusText>
+            <ScrollView>
+              <AddCardBody>
+                <AddCardInput placeholder={'Card Number'} />
+                <AddCardInput placeholder={'Security Code'} />
+                <AddCardInput placeholder={'Expire Date   DD/MM'} />
+                <AddCardInput placeholder={'First Name'} />
+                <AddCardInput placeholder={'Last Name'} />
+              </AddCardBody>
+
+              <ToggleContainer>
+                <ToggleContentText>{"You can remove this card at anytime "}</ToggleContentText>
+                <Switch
+                 value={isSwitchOn} onValueChange={onToggleSwitch}
+                 color={theme.primary}
+                  style={{paddingLeft: 10}}
+                />
+              </ToggleContainer>
+              <AddCardButtonContainer onPress={() => toggleModal()}>
+                <Icon
+                  name={'add'}
+                  type={'MaterialIcons'}
+                  size={getByScreenSize(theme.text.s6, theme.text.s6)}
+                  color={theme.homeBackground}
+                  style={{top: 1, right: 15}}
+                />
+                <AddCardButtonText>{'Add Card'}</AddCardButtonText>
+              </AddCardButtonContainer>
+            </ScrollView>
           </MainContainer>
         )}
       </Modal>

@@ -62,11 +62,7 @@ const defaultTheme = {
     text: '#444444',
     star: '#FF0000',
   },
-  acmCard: {
-    title: PRIMARY_COLOR,
-    content: '#444444',
-    shadow: '#aaaaaa',
-  },
+  
   topTabs: {
     inActiveLabel: '#777777',
     activeLabel: PRIMARY_COLOR,

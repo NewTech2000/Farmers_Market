@@ -6,6 +6,7 @@ import BorderButton from '../../components/atoms/BorderButton/BorderButton';
 import HomeItemCard from '../../components/molecule/HomeItemCard';
 import Routes from '../../routes/Routes';
 import {getByScreenSize} from '../../utils/responsive';
+import DriverOrderPickupCard from '../../components/molecule/DriverOrderPickupCard';
 
 const MainContainer = styled.View`
   flex: 1;
@@ -49,7 +50,7 @@ export default function ItemScreen({navigation}) {
             position: 'absolute',
           }}
           title={'Add New Item'}
-          onPress={()=>navigation.navigate(Routes.ADDNEWITEM)}
+          onPress={() => navigation.navigate(Routes.ADDNEWITEM)}
         />
       </AddItemContainer>
       <ScrollView>
@@ -60,6 +61,8 @@ export default function ItemScreen({navigation}) {
           <Container></Container>
           <Container></Container>
           <Container></Container>
+          <DriverOrderPickupCard />
+          <DriverOrderPickupCard />
         </BodyContainer>
       </ScrollView>
     </MainContainer>

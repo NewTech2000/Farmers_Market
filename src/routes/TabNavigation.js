@@ -28,6 +28,8 @@ import Routes from './Routes';
 import GetStart from '../screens/GetStart';
 import PrivacyPolicy from '../screens/PrivacyPolicy';
 import About from '../screens/About';
+import FutureGoals from '../screens/FutureGoals';
+import FinancialGoals from '../screens/FinancialGoals';
 
 const TopTab = createMaterialTopTabNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -337,7 +339,8 @@ const DrawerScreen = ({navigation}) => {
             <Title style={{paddingTop: 95}}>{'Protect Farmer & Crops'}</Title>
           </DrawerTopContainer>
           <DrawerItemsContainer>
-            <DrawerItemContainer onPress={() => navigation.navigate('Feed')}>
+            <DrawerItemContainer
+              onPress={() => navigation.navigate(Routes.MAIN_HOME)}>
               <Icon
                 name={'home'}
                 size={20}
@@ -370,7 +373,8 @@ const DrawerScreen = ({navigation}) => {
               <ItemText>{'Pending Payments(0)'}</ItemText>
             </DrawerItemContainer>
 
-            <DrawerItemContainer>
+            <DrawerItemContainer
+              onPress={() => navigation.navigate(Routes.FINANCIALGOALS)}>
               <Icon
                 name={'finance'}
                 size={20}
@@ -381,7 +385,8 @@ const DrawerScreen = ({navigation}) => {
               <ItemText>{'Finance Details'}</ItemText>
             </DrawerItemContainer>
 
-            <DrawerItemContainer>
+            <DrawerItemContainer
+              onPress={() => navigation.navigate(Routes.FUTUREGOALS)}>
               <Icon
                 name={'target'}
                 size={20}
@@ -479,6 +484,20 @@ const DrawerScreen = ({navigation}) => {
         }}
         name={Routes.ABOUT}
         component={About}
+      />
+      <Drawer.Screen
+        options={{
+          header: props => <AppHeader header={'Future Goals'} showMenu />,
+        }}
+        name={Routes.FUTUREGOALS}
+        component={FutureGoals}
+      />
+      <Drawer.Screen
+        options={{
+          header: props => <AppHeader header={'Financial Goals'} showMenu />,
+        }}
+        name={Routes.FINANCIALGOALS}
+        component={FinancialGoals}
       />
     </Drawer.Navigator>
   );

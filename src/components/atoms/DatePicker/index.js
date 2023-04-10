@@ -7,7 +7,7 @@ import { getByScreenSize } from "../../../utils/responsive";
 import { formatDate, formatDateTime, formatTime } from "../../../utils/date";
 import { TouchableOpacity } from "react-native";
 import DatePicker from "react-native-date-picker";
-import Icon from "../../Icon";
+import Icon from "../../atoms/Icon";
 
 const Container = styled.View`
   width: 100%;
@@ -29,7 +29,9 @@ const ValueContainer = styled.View`
 `;
 const Value = styled(TextGeneric)`
   font-size: ${({ theme }) => getByScreenSize(theme.text.s8, theme.text.s9)}px;
+  font-weight:200;
 `;
+
 const CustomDatePicker = ({
   label,
   required,
@@ -79,7 +81,7 @@ const CustomDatePicker = ({
           mode={mode}
           open={show}
           date={value ? new Date(value) : new Date()}
-          maximumDate={value ? new Date(value) : new Date()}
+          // maximumDate={value ? new Date(value) : new Date()}
           onConfirm={onDateChange}
           onCancel={() => {
             setShow(false);

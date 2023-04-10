@@ -8,6 +8,8 @@ import Icon from '../../components/atoms/Icon';
 import SaveButton from '../../components/atoms/Button';
 import String from '../../assets/resources/String';
 import Routes from '../../routes/Routes';
+import AppModal from '../../components/molecule/Model';
+import {useState} from 'react';
 
 const MainContainer = styled.View`
   flex: 1;
@@ -105,20 +107,19 @@ const AddButtonContainer = styled.TouchableOpacity`
   background-color: ${({theme}) => theme.homeBackground};
   border-radius: 20px;
   width: 50px;
-  height:20px;
+  height: 20px;
   border-color: ${({theme}) => theme.newButton};
   align-items: center;
   left: 35px;
   margin-top: 30px;
-
 `;
 
 const ButtonText = styled.Text`
   color: ${({theme}) => theme.newButton};
   font-weight: bold;
   font-size: 8px;
-  text-align:center;
-  top:2px;
+  text-align: center;
+  top: 2px;
 `;
 
 const ButtonContainer = styled.View`
@@ -133,6 +134,13 @@ const ButtonContainer = styled.View`
 export default function Payment({navigation}) {
   const theme = useTheme();
   const [checked, setChecked] = React.useState('COD');
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [correctModel, setCorrectModel] = useState('');
+
+  const toggleModal = modelName => {
+    setModalVisible(true);
+    setCorrectModel('AddCard');
+  };
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -213,7 +221,8 @@ export default function Payment({navigation}) {
           </InnerContainer>
         </PaymentContainer>
       </Container>
-      <AddButton>
+
+      <AddButton onPress={() => toggleModal()}>
         <NextText>{'Add Another Credit/Debit Card'}</NextText>
         <Icon
           name={'rightcircleo'}
@@ -229,9 +238,17 @@ export default function Payment({navigation}) {
           title={String.BUTTON.PROCESSTOPAY}
           mode="contained"
           // loading={loading}
-          onPress={() => navigation.navigate(Routes.PAYMENTSUCCESS)} 
+          onPress={() => navigation.navigate(Routes.PAYMENTSUCCESS)}
         />
       </ButtonContainer>
+
+      <AppModal
+        modelName={correctModel}
+        toggleModal={() => setModalVisible(!isModalVisible)}
+        isModalVisible={isModalVisible}
+        onBackdropPress={() => setModalVisible(false)}
+        closeOnPress={() => setModalVisible(false)}
+      />
     </MainContainer>
   );
 }

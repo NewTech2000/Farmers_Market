@@ -1,9 +1,9 @@
-import React from "react";
-import styled, { useTheme } from "styled-components/native";
-import TextGeneric from "../TextGeneric";
-import PropTypes from "prop-types";
-import Icon from "../Icon";
-import { getByScreenSize } from "../../../utils/responsive";
+import React from 'react';
+import styled, {useTheme} from 'styled-components/native';
+import TextGeneric from '../TextGeneric';
+import PropTypes from 'prop-types';
+import Icon from '../Icon';
+import {getByScreenSize} from '../../../utils/responsive';
 
 const RowView = styled.View`
   width: 100%;
@@ -12,27 +12,26 @@ const RowView = styled.View`
 `;
 
 const Text = styled(TextGeneric)`
-  color: ${({ theme }) => theme.label.textPrimary};
-  font-weight: bold;
-  font-size: ${({ theme }) => getByScreenSize(theme.text.s8, theme.text.s9)}px;
+  color: ${({theme}) => theme.label.textPrimary};
+  font-size: ${({theme}) => getByScreenSize(theme.text.s8, theme.text.s9)}px;
   margin-left: 3px;
   margin-bottom: 5px;
 `;
 
 const Required = styled(TextGeneric)`
-  font-size: ${({ theme }) => theme.text.s8}px;
-  color: ${({ theme }) => theme.label.required};
+  font-size: ${({theme}) => theme.text.s8}px;
+  color: ${({theme}) => theme.label.required};
   padding-horizontal: 3%;
 `;
 
-const Label = ({ label, iconName, iconType, required, style }) => {
+const Label = ({label, iconName, iconType, required, style}) => {
   const theme = useTheme();
 
   return (
     <RowView>
       <Text style={style}>{label}</Text>
       {required && <Required>*</Required>}
-      {iconName !== "" && (
+      {iconName !== '' && (
         <Icon
           name={iconName}
           type={iconType}
@@ -53,8 +52,8 @@ Label.propTypes = {
 };
 
 Label.defaultProps = {
-  iconName: "",
-  iconType: "",
+  iconName: '',
+  iconType: '',
   required: false,
   style: null,
 };
