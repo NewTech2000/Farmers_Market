@@ -24,11 +24,11 @@ export default function AuthNavigator() {
         screenOptions={() => ({
           headerTitleStyle: {color: 'black',alignSelf:'center'},
         })}>
-             {/* <Stack.Screen
+             <Stack.Screen
           name={Routes.APP}
           component={AppNavigator}
           options={{headerShown: false}}
-        /> */}
+        />
         <Stack.Screen
           name={Routes.LOGIN}
           component={LoginScreen}

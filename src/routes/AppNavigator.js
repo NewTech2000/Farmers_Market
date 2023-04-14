@@ -22,7 +22,7 @@ const Stack = createStackNavigator();
 // This component router will have the tabs
 const AppNavigator = () => {
   return (
-    <NavigationContainer>
+    // <NavigationContainer>
       <Stack.Navigator
         screenOptions={{gestureEnabled: true}}
         initialRouteName={routes.MAIN_DRAWER}>
@@ -95,7 +95,7 @@ const AppNavigator = () => {
           component={OrderDetails}
         />
       </Stack.Navigator>
-    </NavigationContainer>
+    // {/* </NavigationContainer> */}
   );
 };
 
