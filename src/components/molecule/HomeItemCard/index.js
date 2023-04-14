@@ -2,9 +2,8 @@ import React from 'react';
 import styled, {useTheme} from 'styled-components/native';
 import {getByScreenSize, hdp, wdp} from '../../../utils/responsive';
 import ItemCard from '../../atoms/ItemCard/index';
-import {StatusBar, Text, View} from 'react-native';
+import {StatusBar, Text, TouchableOpacity} from 'react-native';
 import Icon from '../../atoms/Icon';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import TextGeneric from '../../atoms/TextGeneric';
 
 const Container = styled.TouchableOpacity`
@@ -85,6 +84,8 @@ const HomeItemCard = ({
   rating,
   favorite,
   onPress,
+  actionOnPress,
+  onFavoritePress,
   ...props
 }) => {
   const theme = useTheme();
@@ -165,7 +166,7 @@ const HomeItemCard = ({
           </DetailContainer>
         </InnerContainer>
         <LeftContainer>
-          <TouchableOpacity style={{marginBottom: 20}}>
+          <TouchableOpacity style={{marginBottom: 20}} onPress={actionOnPress}>
             <Icon
               name={'dots-three-vertical'}
               size={20}
@@ -173,7 +174,7 @@ const HomeItemCard = ({
               color={theme.darkGray}
             />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={onFavoritePress}>
             <Icon
               name={'star-o'}
               size={20}

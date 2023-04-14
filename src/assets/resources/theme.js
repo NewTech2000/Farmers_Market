@@ -30,6 +30,7 @@ const defaultTheme = {
   star: '#ffcc00',
   dark: '#262626',
   darkGreen:'#00802b',
+  edit:'#3385ff',
 
   button: {
     PrimaryBackground: '#A88448',
@@ -39,30 +40,6 @@ const defaultTheme = {
   title: {
     titleColor: '#111111',
   },
-  buildingInfo: {
-    background: '#FFFFFF',
-    titleBackground: '#FAFAF9',
-    iconBackground: '#E56798',
-    title: '#000000',
-    description: '#555555',
-    titleIcon: '#FFFFFF',
-    sectionTitle: '#000000',
-    acmsIconBackground: '#4FAC9C',
-    notesIconBackground: '#E6D478',
-    filesIconBackground: '#BAAC93',
-    activityHistoryIconBackground: '#4FAC9C',
-    auditsIconBackground: '#97CF5D',
-    buildingHistoryIconBackground: '#E56798',
-  },
-  removeAcmStep1: {
-    background: '#FFFFFF',
-  },
-  removeAcmStep2: {
-    background: '#FFFFFF',
-    text: '#444444',
-    star: '#FF0000',
-  },
-  
   topTabs: {
     inActiveLabel: '#777777',
     activeLabel: PRIMARY_COLOR,
@@ -139,9 +116,6 @@ const defaultTheme = {
     inputBorder: '#A1A1A1',
     placeholder: '#909095',
   },
-  viewACMs: {
-    buttonColor: '#f15820',
-  },
   camera: {
     buttonColor: '#00cdc0',
   },
@@ -170,9 +144,6 @@ const defaultTheme = {
     titleIcon: '#FFFFFF',
     sectionTitle: '#000000',
     followersBackground: '#65eac4',
-  },
-  acmDetails: {
-    background: 'rgba(222,222,222,0.24)',
   },
   buildingHistory: {
     background: '#FFFFFF',

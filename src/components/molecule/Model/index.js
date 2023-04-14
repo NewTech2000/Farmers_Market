@@ -124,8 +124,7 @@ const StatusText = styled(TextGeneric)`
   color: ${({theme}) => theme.text.textPrimary};
   font-weight: bold;
   font-size: ${({theme}) => getByScreenSize(theme.text.s8, theme.text.s8)}px;
-  top: 10px;
-  width: 180px;
+  padding-top: 10px;
 `;
 
 const ButtonContainer = styled.View`
@@ -263,13 +262,46 @@ const ToggleContainer = styled.View`
 `;
 
 const ToggleContentText = styled(TextGeneric)`
-  color: ${({theme}) => theme.acmCard.content};
+  color: ${({theme}) => theme.darkGray};
   font-size: ${({theme}) => getByScreenSize(theme.text.s9, theme.text.s10)}px;
   flex-wrap: wrap;
   top: 5px;
 `;
 
+const RatingContainer = styled.View`
+  padding-top: 50px;
+`;
+
+const SeparatorLine = styled.View`
+  height: 2px;
+  width: 80%;
+  align-self: center;
+  background-color: ${({theme}) => theme.darkGray};
+  margin-top: 20px;
+`;
+
+const IconRow = styled.View`
+align-self:flex-end;
+flex-direction:row
+height:50px;
+align-self: center;
+padding-left:20px;
+`;
+
+const DetailContainer = styled.View`
+  flex-direction: row;
+  padding-left: 60px;
+  padding-top: 10px;
+`;
+
+const UserText = styled(TextGeneric)`
+  color: ${({theme}) => theme.userColor};
+  font-weight: 600;
+  font-size: ${({theme}) => getByScreenSize(theme.text.s8, theme.text.s9)}px;
+`;
+
 const NextText = styled.Text``;
+
 const AppModal = ({
   modelName,
   toggleModal,
@@ -280,6 +312,7 @@ const AppModal = ({
   userRole,
   title,
   ViewMoreOnPress,
+  doneOnPress,
 }) => {
   const theme = useTheme();
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
@@ -859,6 +892,190 @@ const AppModal = ({
           </MainContainer>
         )}
 
+        {modelName === 'ratingModel' && (
+          <MainContainer>
+            <Line />
+            <TouchableOpacity onPress={closeOnPress}>
+              <Icon
+                name={'closecircle'}
+                size={25}
+                type={'AntDesign'}
+                color={theme.darkGray}
+                style={{left: 340, paddingTop: 3}}
+              />
+            </TouchableOpacity>
+
+            <TitleText>{'Share Your Experience With Us'}</TitleText>
+            <ScrollView>
+              <RatingContainer>
+                <StatusText>
+                  {'How About The Bought Items Quality  ?'}
+                </StatusText>
+                <DetailContainer>
+                  <Icon
+                    name={'dot-circle-o'}
+                    size={15}
+                    type={'FontAwesome'}
+                    color={theme.userColor}
+                    style={{padding: 3, right: 11}}
+                  />
+
+                  <UserText>{'Carrot'}</UserText>
+                </DetailContainer>
+                <IconRow>
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                </IconRow>
+                <SeparatorLine />
+              </RatingContainer>
+
+              <RatingContainer>
+                <StatusText>
+                  {'How About The Seller  ?'}
+                </StatusText>
+                <DetailContainer>
+                  <Icon
+                    name={'dot-circle-o'}
+                    size={15}
+                    type={'FontAwesome'}
+                    color={theme.userColor}
+                    style={{padding: 3, right: 11}}
+                  />
+
+                  <UserText>{'Sunil'}</UserText>
+                </DetailContainer>
+                <IconRow>
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                </IconRow>
+                <SeparatorLine />
+              </RatingContainer>
+
+              <RatingContainer>
+                <StatusText>{'How About TheDelivery  ?'}</StatusText>
+                <DetailContainer>
+                  <Icon
+                    name={'dot-circle-o'}
+                    size={15}
+                    type={'FontAwesome'}
+                    color={theme.userColor}
+                    style={{padding: 3, right: 11}}
+                  />
+
+                  <UserText>{'Kamal- Mini Lorry'}</UserText>
+                </DetailContainer>
+                <IconRow>
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                  <Icon
+                    name={'star'}
+                    size={25}
+                    type={'FontAwesome'}
+                    color={theme.star}
+                    style={{paddingRight: 20, paddingTop: 20}}
+                  />
+                </IconRow>
+                <SeparatorLine />
+              </RatingContainer>
+
+              <ButtonContainer>
+                <Button title={'Done'} mode="contained" onPress={doneOnPress} />
+              </ButtonContainer>
+            </ScrollView>
+          </MainContainer>
+        )}
         {modelName === 'AddCard' && (
           <MainContainer>
             <Line />
@@ -883,10 +1100,13 @@ const AppModal = ({
               </AddCardBody>
 
               <ToggleContainer>
-                <ToggleContentText>{"You can remove this card at anytime "}</ToggleContentText>
+                <ToggleContentText>
+                  {'You can remove this card at anytime '}
+                </ToggleContentText>
                 <Switch
-                 value={isSwitchOn} onValueChange={onToggleSwitch}
-                 color={theme.primary}
+                  value={isSwitchOn}
+                  onValueChange={onToggleSwitch}
+                  color={theme.primary}
                   style={{paddingLeft: 10}}
                 />
               </ToggleContainer>

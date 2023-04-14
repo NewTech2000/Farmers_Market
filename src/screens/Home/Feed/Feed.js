@@ -7,6 +7,8 @@ import SearchBar from '../../../components/molecule/SearchBar';
 import AddPost from '../../../components/molecule/AddPost';
 import {ScrollView} from 'react-native-gesture-handler';
 import Routes from '../../../routes/Routes';
+import {useState} from 'react';
+import {ModelAlerts} from '../../../components/molecule/ModelAlerts/inedx';
 
 const MainContainer = styled.View`
   flex: 1;
@@ -26,6 +28,26 @@ const BodyContainer = styled.View`
   background-color: ${({theme}) => theme.lightGray};
 `;
 const FeedScreen = ({navigation}) => {
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [alertType, SetAlertType] = useState('');
+
+  const toggleAlert = x => {
+    if (x === 'delete') {
+      // setAlertVisible(!alertVisible);
+      SetAlertType('delete');
+    } else if (x === 'update') {
+      SetAlertType('update');
+    } else if (x === 'offline') {
+      setAlertVisible(!alertVisible);
+      SetAlertType('offline');
+    } else {
+      setAlertVisible(!alertVisible);
+      SetAlertType('mainAlert');
+    }
+  };
+
+
+
   return (
     <MainContainer>
       <StatusBar backgroundColor="#009933" barStyle="light-content" />
@@ -35,12 +57,27 @@ const FeedScreen = ({navigation}) => {
       </View>
       <ScrollView>
         <BodyContainer>
-          <Container onPress={()=>navigation.navigate(Routes.SINGLEITEM)}></Container>
+          <Container
+            onPress={() => navigation.navigate(Routes.SINGLEITEM)}></Container>
+          <Container
+            actionOnPress={() => toggleAlert()}
+            onFavoritePress={() => toggleAlert('offline')}></Container>
           <Container></Container>
           <Container></Container>
           <Container></Container>
           <Container></Container>
-          <Container></Container>
+
+          <ModelAlerts
+            alert={alertType}
+            toggleModal={() => toggleAlert(!alertVisible)}
+            isModalVisible={alertVisible}
+            closeOnPress={() => toggleAlert(false)}
+            onBackdropPress={() => setAlertVisible(false)}
+            onDeletePress={() => toggleAlert('delete')}
+            OnEditPress={() => toggleAlert('update')}
+          />
+
+      
         </BodyContainer>
       </ScrollView>
     </MainContainer>

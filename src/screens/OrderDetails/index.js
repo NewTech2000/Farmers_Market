@@ -19,6 +19,7 @@ import CameraButton from '../../components/molecule/CameraButton';
 import Button from '../../components/atoms/Button';
 import ErrorText from '../../components/atoms/errorText/errorText';
 import ExpandableView from '../../components/molecule/ExpandableView';
+import AppModal from '../../components/molecule/Model';
 
 const MainContainer = styled.View`
   flex: 1;
@@ -51,6 +52,20 @@ const ButtonContainer = styled.View`
 
 const OrderDetails = ({navigation}) => {
   const theme = useTheme();
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [correctModel, setCorrectModel] = useState('');
+
+  const toggleModal = modelName => {
+
+    if (modelName =="ratingModel") {
+     
+      setCorrectModel('ratingModel');
+      setModalVisible(true);
+      // navigation.navigate(Routes.HOME)
+    }
+   
+  };
+
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -99,10 +114,20 @@ const OrderDetails = ({navigation}) => {
           title={String.BUTTON.HOME}
           mode="contained"
           // loading={loading}
-          onPress={() => navigation.navigate(Routes.HOME)}
+          onPress={() => toggleModal("ratingModel")}
+        />
+
+        <AppModal
+          modelName={correctModel}
+          toggleModal={() => setModalVisible(!isModalVisible)}
+          isModalVisible={isModalVisible}
+          onBackdropPress={() => setModalVisible(false)}
+          closeOnPress={() => setModalVisible(false)}
+          ViewMoreOnPress={() => navigation.navigate(Routes.ORDERDETAILS)}
+          doneOnPress={()=>navigation.navigate(Routes.MAIN_HOME)}
         />
       </ButtonContainer>
     </MainContainer>
   );
 };
-export default OrderDetails;
+export default OrderDetails;          
