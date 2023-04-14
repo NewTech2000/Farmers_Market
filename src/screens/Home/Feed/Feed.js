@@ -9,6 +9,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import Routes from '../../../routes/Routes';
 import {useState} from 'react';
 import {ModelAlerts} from '../../../components/molecule/ModelAlerts/inedx';
+import {foodItems} from '../../../utils/Data';
 
 const MainContainer = styled.View`
   flex: 1;
@@ -46,8 +47,6 @@ const FeedScreen = ({navigation}) => {
     }
   };
 
-
-
   return (
     <MainContainer>
       <StatusBar backgroundColor="#009933" barStyle="light-content" />
@@ -57,15 +56,20 @@ const FeedScreen = ({navigation}) => {
       </View>
       <ScrollView>
         <BodyContainer>
-          <Container
-            onPress={() => navigation.navigate(Routes.SINGLEITEM)}></Container>
-          <Container
-            actionOnPress={() => toggleAlert()}
-            onFavoritePress={() => toggleAlert('offline')}></Container>
-          <Container></Container>
-          <Container></Container>
-          <Container></Container>
-          <Container></Container>
+          {foodItems.map((item, index) => (
+            <View key={index}>
+              <Container
+                title={item.name}
+                address={item.location}
+                image={item.image}
+                user={item.seller}
+                price={item.price}
+                actionOnPress={() => toggleAlert()}
+                onFavoritePress={() => toggleAlert('offline')}
+                onPress={() => navigation.navigate(Routes.SINGLEITEM)}
+              />
+            </View>
+          ))}
 
           <ModelAlerts
             alert={alertType}
@@ -76,8 +80,6 @@ const FeedScreen = ({navigation}) => {
             onDeletePress={() => toggleAlert('delete')}
             OnEditPress={() => toggleAlert('update')}
           />
-
-      
         </BodyContainer>
       </ScrollView>
     </MainContainer>

@@ -81,6 +81,7 @@ const HomeItemCard = ({
   title,
   price,
   user,
+  address,
   rating,
   favorite,
   onPress,
@@ -92,10 +93,10 @@ const HomeItemCard = ({
   return (
     <ItemCard>
       <Container onPress={onPress}>
-        <Images source={require('../../../assets/images/ITM1.jpg')} />
+        <Images source={image} />
         <Line />
         <InnerContainer>
-          <TitleText>{'Carrot'}</TitleText>
+          <TitleText>{title}</TitleText>
           <DetailContainer>
             <Icon
               name={'bitcoin'}
@@ -104,7 +105,7 @@ const HomeItemCard = ({
               color={theme.priceColor}
               style={{padding: 3, right: 10}}
             />
-            <PriceText>{'LKR : 350'}</PriceText>
+            <PriceText>{"LKR "+ price}</PriceText>
           </DetailContainer>
           <DetailContainer>
             <Icon
@@ -114,7 +115,7 @@ const HomeItemCard = ({
               color={theme.primary}
               style={{padding: 3, right: 12}}
             />
-            <AddressText>{'Galle'}</AddressText>
+            <AddressText>{address}</AddressText>
           </DetailContainer>
           <DetailContainer>
             <Icon
@@ -125,7 +126,7 @@ const HomeItemCard = ({
               style={{padding: 3, right: 11}}
             />
 
-            <UserText>{'Kamal'}</UserText>
+            <UserText>{user}</UserText>
             <RatingContainer>
               <Icon
                 name={'star-o'}

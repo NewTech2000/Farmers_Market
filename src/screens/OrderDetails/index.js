@@ -103,9 +103,9 @@ const OrderDetails = ({navigation}) => {
           <ScrollView>
             <ExpandableView />
 
-            <ExpandableView />
+            {/* <ExpandableView />
 
-            <ExpandableView />
+            <ExpandableView /> */}
           </ScrollView>
         </BodyContainer>
       </ScrollView>

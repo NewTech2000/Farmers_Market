@@ -87,7 +87,7 @@ const OrderItemCard = ({image, status, orderId, onPress, UserRole}) => {
       {status == 'Pending' && UserRole !== 'Driver' && (
         <ItemCard>
           <Container>
-            <Images source={require('../../../assets/images/ITM1.jpg')} />
+            <Images source={require('../../../assets/images/a1.jpg')} />
             <Line />
             <InnerContainer>
               <TitleContainer style={{marginTop: 20}}>
@@ -107,7 +107,7 @@ const OrderItemCard = ({image, status, orderId, onPress, UserRole}) => {
       {status === 'Pending' && UserRole === 'Driver' ? (
         <ItemCard>
           <Container>
-            <Images source={require('../../../assets/images/ITM1.jpg')} />
+            <Images source={require('../../../assets/images/o1.jpeg')} />
             <Line />
             <InnerContainer>
               <TitleContainer style={{marginTop: 20}}>
