@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from '../../atoms/Icon';
-import ItemCard from '../../atoms/ItemCard';
+
 import styled, {useTheme} from 'styled-components/native';
 import TextGeneric from '../../atoms/TextGeneric';
 import {getByScreenSize} from '../../../utils/responsive';
@@ -43,7 +43,20 @@ const InnerContainer = styled.View`
   flex-direction: row;
 `;
 
-const NotificationCard = ({title, details, onPress, read}) => {
+const ItemCard = styled.View`
+  border-radius: 15px;
+  background-color: ${({theme}) => theme.homeBackground};
+  shadow-color: #000;
+  shadow-opacity: 0.2;
+  shadow-radius: 5px;
+  elevation: 15;
+  height: 110px;
+  margin: 8px;
+  left:5px
+  width: 395px;
+`;
+
+const NotificationCard = ({title, details, onPress, read,DriverNotification}) => {
   const theme = useTheme();
   return (
     <View>
@@ -56,7 +69,7 @@ const NotificationCard = ({title, details, onPress, read}) => {
           style={{position: 'absolute', zIndex: 1, top: 15}}
         />
       )}
-      <ItemCard style={{color: 'red'}}>
+      <ItemCard style={DriverNotification?{height:170}:{}}>
         <MainContainer>
           <TitleText>{title}</TitleText>
           <InnerContainer>

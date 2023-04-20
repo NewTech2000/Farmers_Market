@@ -91,7 +91,22 @@ const ChangePassword = ({navigation}) => {
 
   const handleChangePassword = () => {
     setLoading(true);
-    navigation.navigate(Routes.SIGNING);
+    Toast.show({
+      type: 'success',
+      text1: 'Success',
+      text2: 'Your Password Changes Please Login',
+      visibilityTime: 3000,
+      autoHide: true,
+      topOffset: 30,
+      bottomOffset: 10,
+      onPress: () => {
+        console.log('Toast message pressed');
+      },
+      onHide: () => {
+        navigation.navigate(Routes.LOGIN);
+      },
+    }),
+   
     setLoading(false);
   };
 

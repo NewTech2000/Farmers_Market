@@ -22,6 +22,7 @@ import Data, {
 import String from '../../assets/resources/String';
 import {ScrollView} from 'react-native-gesture-handler';
 import ErrorText from '../../components/atoms/errorText/errorText';
+import Routes from '../../routes/Routes';
 
 const MainContainer = styled.View`
   flex: 1;
@@ -81,7 +82,7 @@ const InputContainer = styled.View`
   padding-bottom: 90px;
 `;
 
-export default function ProfileScreen() {
+export default function ProfileScreen({navigation}) {
   const theme = useTheme();
   const [initialValues, setInitialValues] = useState({
     firstName: '',
@@ -127,7 +128,7 @@ export default function ProfileScreen() {
   return (
     <MainContainer>
       <IconContainer>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("Chat")}>
           <Icon
             name={'chatbubble-ellipses-outline'}
             size={30}

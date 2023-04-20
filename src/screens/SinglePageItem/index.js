@@ -214,15 +214,26 @@ const SingleItem = ({navigation}) => {
   const [cartData, setCartData] = useState(10);
   const [count, setCount] = useState(0);
   const [availableQuantity, setAvailableQuantity] = useState(0);
+  const [price, setPrice] = useState(150);
+  const [total, setTotal] = useState(0);
 
   const handleIncrement = () => {
     setCount(count + 1);
+    handlePrice('increment');
   };
 
   const handleDecrement = () => {
+    handlePrice();
     setCount(count - 1);
   };
 
+  const handlePrice = x => {
+    if (x == 'increment') {
+      setTotal(count * price);
+    } else {
+      setTotal(total - price);
+    }
+  };
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: 'Carrot',
@@ -262,11 +273,11 @@ const SingleItem = ({navigation}) => {
                 role={'button'}
                 onPress={() => {}}
               />
-              {cartData && cartData !== null && (
-                <CartCountContainer>
-                  <Count>{cartData}</Count>
-                </CartCountContainer>
-              )}
+              {/* {cartData && cartData !== null && ( */}
+              <CartCountContainer key={count}>
+                <Count>{count}</Count>
+              </CartCountContainer>
+              {/* )} */}
             </>
           </CartContainer>
         </LeftContainer>
@@ -344,7 +355,7 @@ const SingleItem = ({navigation}) => {
               autoCapitalize="none"
               keyboardType="numeric"
               autoCorrect={false}
-              defaultValue={'0766028355'}
+              defaultValue={'10'}
               showInfo
               disabled
               inputStyle={{backgroundColor: theme.gray}}
@@ -424,7 +435,7 @@ const SingleItem = ({navigation}) => {
           <PriceContainer>
             <PriceText>{'Your Total'}</PriceText>
             <PriceText style={{paddingLeft: wdp(38)}}>
-              {'Rs ' + ' 1750 .00'}
+              {'Rs ' + total}
             </PriceText>
           </PriceContainer>
 
@@ -433,11 +444,11 @@ const SingleItem = ({navigation}) => {
               title={String.BUTTON.ADDTOCART}
               mode="contained"
               // loading={loading}
-              onPress={()=>navigation.navigate(Routes.CART)}
+              onPress={() => navigation.navigate(Routes.CART)}
             />
           </ButtonContainer>
           {cartData < count && (
-            <NextButton>
+            <NextButton onPress={() => navigation.navigate(Routes.CART)}>
               <NextText>{'Buy The Rest Quantity  from Next Item '}</NextText>
               <Icon
                 name={'rightcircleo'}

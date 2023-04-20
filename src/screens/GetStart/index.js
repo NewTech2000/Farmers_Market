@@ -52,7 +52,7 @@ const GetStart = ({navigation}) => {
         <ButtonContainer>
           <Button
             title={String.BUTTON.Start}
-            onPress={() => navigation.navigate(Routes.MAIN_HOME)}
+            onPress={() => navigation.navigate(Routes.LOGIN)}
           />
         </ButtonContainer>
       </BackgroundContainer>

@@ -353,70 +353,7 @@ export default {
       }
     },
 
-    async getListValue() {
-      let { setCategoryList } = dispatch.auth;
-      const access_token = await AsyncStorage.getItem("access_token");
-      const tenantToken = await AsyncStorage.getItem("tenantToken");
-      const OrgId = await AsyncStorage.getItem("OrgId");
 
-      const config = {
-        headers: {
-          Authorization: access_token,
-        },
-      };
-      const url = `${env.API_URL}common/GetListValue/${tenantToken}/3/131`;
-
-      try {
-        const response = await axios.get(url, config);
-        if (response && response.data) {
-          let dataArray = [];
-          response.data.map((item, index) => {
-            dataArray.push({
-              id: item.Id,
-              label: item.Value,
-              value: String(item.Id),
-            });
-          });
-          setCategoryList(dataArray);
-        }
-      } catch (error) {
-        if (error && error.response) {
-          console.log("error.response", error.response);
-        }
-      }
-    },
-
-    async getHealthFacility() {
-      let { setHealthFacility } = dispatch.auth;
-      const access_token = await AsyncStorage.getItem("access_token");
-      const tenantToken = await AsyncStorage.getItem("tenantToken");
-
-      const config = {
-        headers: {
-          Authorization: access_token,
-        },
-      };
-      const url = `${env.API_URL}organization/gethealthfacility/${tenantToken}/null`;
-      try {
-        const response = await axios.get(url, config);
-        if (response && response.data) {
-          let dataArray = [];
-          response.data.map((item, index) => {
-            dataArray.push({
-              id: index,
-              name: item.EngOrgName,
-              OrgId: item.OrgId,
-            });
-          });
-
-          setHealthFacility(dataArray);
-        }
-      } catch (error) {
-        if (error && error.response) {
-          console.log("error.response", error.response);
-        }
-      }
-    },
 
     /**
      *  SignUp Step One

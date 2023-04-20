@@ -21,6 +21,7 @@ import Data, {
   SubRoles,
   UserRoleData,
 } from '../../../utils/Data';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 const BackgroundContainer = styled.View`
   padding: 15px;
@@ -58,7 +59,7 @@ const MainContainer = styled.View`
   background-color: ${({theme}) => theme.homeBackground};
   border-radius: 10px;
   width: ${wdp(90)}px;
-  height: ${hdp(180)}px;
+  height: ${hdp(190)}px;
   align-self: center;
   margin-top: ${hdp(10)}px;
 `;
@@ -140,9 +141,9 @@ const SignIn = ({navigation}) => {
     province: Yup.string().trim().required().label('Province'),
     district: Yup.string().trim().required().label('District'),
     userRole: Yup.string().trim().required().label('User Role'),
-    subRole: Yup.string().trim().required().label('User '),
+    // subRole: Yup.string().trim().required().label('User '),
     email: Yup.string().trim().required().email().label('Email'),
-    postalCode: Yup.string().trim().required().label('Postal Code'),
+    postalCode: Yup.number().required().label('Postal Code'),
     password: Yup.string().trim().required().label('Password'),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], 'Passwords must match')
@@ -150,14 +151,30 @@ const SignIn = ({navigation}) => {
   });
 
   const handleSigning = () => {
+    console.log("sejjjjjjjjjjblkf");
     setLoading(true);
-    navigation.navigate(Routes.SIGNUP);
+    Toast.show({
+      type: 'success',
+      text1: 'Success',
+      text2: 'Register Successful',
+      visibilityTime: 3000,
+      autoHide: true,
+      topOffset: 30,
+      bottomOffset: 10,
+      onPress: () => {
+        console.log('Toast message pressed');
+      },
+      onHide: () => {
+        navigation.navigate(Routes.MAIN_HOME);
+      },
+    }),
     setLoading(false);
   };
 
   return (
     <Background>
       <StatusBar backgroundColor="#FFFF" barStyle="dark-content" />
+      <Toast/>
       <ScrollView>
         <BackgroundContainer>
           <Logo source={require('../../../assets/images/App_Logo.png')} />
@@ -261,7 +278,7 @@ const SignIn = ({navigation}) => {
                         <Input
                           label={'Postal Code'}
                           labelStyle={{fontWeight: '100'}}
-                          onChangeText={handleChange('postal')}
+                          onChangeText={handleChange('postalCode')}
                           placeholder="Enter your Postal code"
                           autoCapitalize="none"
                           keyboardType="numeric"

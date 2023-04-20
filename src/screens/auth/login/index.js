@@ -13,6 +13,7 @@ import Routes from '../../../routes/Routes';
 import {getByScreenSize, hdp, wdp} from '../../../utils/responsive';
 import Input from '../../../components/atoms/Input';
 import ErrorText from '../../../components/atoms/errorText/errorText';
+import Toast from 'react-native-toast-message';
 
 const BackgroundContainer = styled.View`
   padding: 15px;
@@ -50,7 +51,7 @@ const MainContainer = styled.View`
   background-color: ${({theme}) => theme.homeBackground};
   border-radius: 10px;
   width: ${wdp(90)}px;
-  height: ${hdp(55)}px;
+  height: ${hdp(60)}px;
   align-self: center;
   margin-top: ${hdp(5)}px;
 `;
@@ -85,6 +86,23 @@ const PrivacyPolicyText = styled.Text`
 const InputContainer = styled.View`
   padding-top: 20px;
 `;
+
+const AlreadyLoginText = styled.Text`
+  color: ${({theme}) => theme.darkGray};
+  padding-top: ${hdp(3)}px;
+  font-size: ${({theme}) => getByScreenSize(theme.text.s8, theme.text.s8)}px;
+  font-style: italic;
+  text-align: center;
+`;
+
+const LoginText = styled.Text`
+  color: ${({theme}) => theme.text.forgotPasswordTextColor};
+  padding-top: ${hdp(3)}px;
+  font-size: ${({theme}) => getByScreenSize(theme.text.s8, theme.text.s8)}px;
+  font-style: italic;
+  text-align: center;
+`;
+
 const Login = ({navigation}) => {
   const theme = useTheme();
   const [email, setEmail] = useState('');
@@ -96,10 +114,24 @@ const Login = ({navigation}) => {
     password: Yup.string().trim().required().label('Password'),
   });
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     setLoading(true);
-    navigation.navigate(Routes.MAIN_HOME);
-    setLoading(false);
+    Toast.show({
+      type: 'success',
+      text1: 'Success',
+      text2: 'Login Successful',
+      visibilityTime: 2000,
+      autoHide: true,
+      topOffset: 30,
+      bottomOffset: 10,
+      onPress: () => {
+        console.log('Toast message pressed');
+      },
+      onHide: () => {
+        navigation.navigate(Routes.MAIN_HOME);
+      },
+    }),
+      setLoading(false);
   };
 
   return (
@@ -110,7 +142,7 @@ const Login = ({navigation}) => {
           <Logo source={require('../../../assets/images/App_Logo.png')} />
           <AppTitle>{String.APP.AppTitle}</AppTitle>
           <AppSubTitle>{String.APP.AppSubTitle}</AppSubTitle>
-
+          <Toast />
           <MainContainer>
             <InnerContainer>
               <MainContainerText>{String.AUTH.LOGIN}</MainContainerText>
@@ -169,6 +201,13 @@ const Login = ({navigation}) => {
                           onPress={handleSubmit}
                         />
                       </ButtonContainer>
+
+                      <Ripple
+                        onPress={() => navigation.navigate(Routes.SIGNING)}>
+                        <AlreadyLoginText>
+                          Haven`t An Account? <LoginText>Register</LoginText>{' '}
+                        </AlreadyLoginText>
+                      </Ripple>
                     </InputContainer>
                   </>
                 )}

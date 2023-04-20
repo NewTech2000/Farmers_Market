@@ -6,7 +6,6 @@ import Icon from '../../atoms/Icon';
 const Container = styled.View`
   border-radius: 15px;
   background-color: ${({theme}) => theme.homeBackground};
-  height: ${hdp(5)}%;
   shadow-color: #000;
   shadow-opacity: 0.2;
   shadow-radius: 5px;

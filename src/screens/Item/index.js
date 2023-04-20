@@ -7,6 +7,8 @@ import HomeItemCard from '../../components/molecule/HomeItemCard';
 import Routes from '../../routes/Routes';
 import {getByScreenSize} from '../../utils/responsive';
 import DriverOrderPickupCard from '../../components/molecule/DriverOrderPickupCard';
+import {driverItems, foodItems} from '../../utils/Data';
+import {View} from 'react-native';
 
 const MainContainer = styled.View`
   flex: 1;
@@ -26,10 +28,10 @@ const BodyContainer = styled.View`
 `;
 const AddItemContainer = styled.View`
   height: 8%;
-  background-color: ${({theme}) => theme.newButton};
+  background-color: ${({theme}) => theme.lightGray};
 `;
 const Title = styled.Text`
-  color: white;
+  color: ${({theme}) => theme.newButton};
   font-weight: bold;
   font-size: ${({theme}) => getByScreenSize(theme.text.s6, theme.text.s4)}px;
   margin-right: 8px;
@@ -55,14 +57,37 @@ export default function ItemScreen({navigation}) {
       </AddItemContainer>
       <ScrollView>
         <BodyContainer>
-          <Container></Container>
-          <Container></Container>
-          <Container></Container>
-          <Container></Container>
-          <Container></Container>
-          <Container></Container>
-          <DriverOrderPickupCard />
-          <DriverOrderPickupCard />
+          {foodItems.map((item, index) => (
+            <View key={index}>
+              <Container
+                title={item.name}
+                address={item.location}
+                image={item.image}
+                user={item.seller}
+                price={item.price}
+                // actionOnPress={() => toggleAlert()}
+                // onFavoritePress={() => toggleAlert('offline')}
+                onPress={() => navigation.navigate(Routes.SINGLEITEM)}
+              />
+            </View>
+          ))}
+
+          {driverItems.map((item, index) => (
+            <View key={index}>
+              <DriverOrderPickupCard
+                title={item.name}
+                address={item.location}
+                image={item.image}
+                user={item.seller}
+                price={item.price}
+                locationFrom={item.locationFrom}
+                locationTo={item.locationTo}
+                //  actionOnPress={() => toggleAlert()}
+                //  onFavoritePress={() => toggleAlert('offline')}
+                onPress={() => navigation.navigate(Routes.SINGLEITEM)}
+              />
+            </View>
+          ))}
         </BodyContainer>
       </ScrollView>
     </MainContainer>

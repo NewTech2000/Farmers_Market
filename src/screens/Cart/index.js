@@ -11,6 +11,7 @@ import {getByScreenSize, hdp, wdp} from '../../utils/responsive';
 import Icon from '../../components/atoms/Icon';
 import CartCard from '../../components/molecule/CartCard';
 import Routes from '../../routes/Routes';
+import { ModelAlerts } from '../../components/molecule/ModelAlerts/inedx';
 
 const MainContainer = styled.View`
   flex: 1;
@@ -95,8 +96,25 @@ const Cart = ({navigation}) => {
   const theme = useTheme();
   const [favorite, setFavorite] = useState(false);
   const [cartData, setCartData] = useState(10);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(10);
   const [availableQuantity, setAvailableQuantity] = useState(0);
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [alertType, SetAlertType] = useState('');
+
+  const toggleAlert = x => {
+    if (x === 'delete') {
+      setAlertVisible(!alertVisible);
+      SetAlertType('delete');
+    } else if (x === 'update') {
+      SetAlertType('update');
+    } else if (x === 'offline') {
+      setAlertVisible(!alertVisible);
+      SetAlertType('offline');
+    } else {
+      setAlertVisible(!alertVisible);
+      SetAlertType('mainAlert');
+    }
+  };
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: 'Cart',
@@ -138,7 +156,7 @@ const Cart = ({navigation}) => {
               />
               {cartData && cartData !== null && (
                 <CartCountContainer>
-                  <Count>{cartData}</Count>
+                  <Count>{ount}</Count>
                 </CartCountContainer>
               )}
             </>
@@ -160,8 +178,7 @@ const Cart = ({navigation}) => {
             </PriceText>
           </PriceContainer>
 
-          <CartCard />
-          <CartCard />
+          <CartCard onPress={()=>toggleAlert('delete')}/>
         </BodyContainer>
       </ScrollView>
       <ButtonContainer>
@@ -172,6 +189,16 @@ const Cart = ({navigation}) => {
           onPress={()=>navigation.navigate(Routes.DELIVERY)}
         />
       </ButtonContainer>
+
+      <ModelAlerts
+            alert={alertType}
+            toggleModal={() => toggleAlert(!alertVisible)}
+            isModalVisible={alertVisible}
+            closeOnPress={() => toggleAlert(false)}
+            onBackdropPress={() => setAlertVisible(false)}
+            onDeletePress={() => toggleAlert('delete')}
+            OnEditPress={() => toggleAlert('update')}
+          />
     </MainContainer>
   );
 };

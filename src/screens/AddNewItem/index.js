@@ -18,6 +18,7 @@ import * as Yup from 'yup';
 import CameraButton from '../../components/molecule/CameraButton';
 import Button from '../../components/atoms/Button';
 import ErrorText from '../../components/atoms/errorText/errorText';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 const MainContainer = styled.View`
   flex: 1;
@@ -122,11 +123,28 @@ const AddNewItem = ({navigation}) => {
   });
 
   const handleAddItem = () => {
-    navigation.navigate(Routes.HOME);
+    Toast.show({
+      type: 'success',
+      text1: 'Success',
+      text2: 'Adding Item Successful',
+      visibilityTime: 2000, 
+      autoHide: true, 
+      topOffset: 30, 
+      bottomOffset: 20, 
+      onPress: () => {
+        console.log('Toast message pressed');
+      },
+      onHide: () => {
+        navigation.navigate(Routes.HOME);
+      },
+    })
+  
   };
   return (
     <MainContainer>
+        <Toast/>
       <ScrollView>
+      
         <BodyContainer>
           <LabelView>
             <LabelText style={{}}>{'Item Photos'}</LabelText>

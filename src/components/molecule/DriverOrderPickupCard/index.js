@@ -2,9 +2,8 @@ import React from 'react';
 import styled, {useTheme} from 'styled-components/native';
 import {getByScreenSize, hdp, wdp} from '../../../utils/responsive';
 import ItemCard from '../../atoms/ItemCard/index';
-import {StatusBar, Text, View} from 'react-native';
+import {StatusBar, Text, View,TouchableOpacity} from 'react-native';
 import Icon from '../../atoms/Icon';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import TextGeneric from '../../atoms/TextGeneric';
 
 const Container = styled.TouchableOpacity`
@@ -172,23 +171,26 @@ const DriverOrderPickupCard = ({
   rating,
   favorite,
   onPress,
+  locationFrom,
+  locationTo,
+  address,
   ...props
 }) => {
   const theme = useTheme();
   return (
     <ItemCards>
       <Container onPress={onPress}>
-        <Images source={require('../../../assets/images/ITM1.jpg')} />
+        <Images source={image} />
         <Line />
         <AddressContainer>
           <DeliveryAddressText>{'From :  '}</DeliveryAddressText>
-          <Location>{'Galle'}</Location>
+          <Location>{locationFrom}</Location>
           <Location>{' -----'}</Location>
           <DeliveryAddressText>{'To'}</DeliveryAddressText>
-          <Location>{'Mathara'}</Location>
+          <Location>{locationTo}</Location>
         </AddressContainer>
         <InnerContainer>
-          <TitleText>{'Carrot'}</TitleText>
+          <TitleText>{  title}</TitleText>
           <DetailContainer>
             <Icon
               name={'bitcoin'}
@@ -197,7 +199,7 @@ const DriverOrderPickupCard = ({
               color={theme.priceColor}
               style={{padding: 3, right: 10}}
             />
-            <PriceText>{'LKR : 350'}</PriceText>
+            <PriceText>{'LKR :' + price}</PriceText>
           </DetailContainer>
           <DetailContainer>
             <Icon
@@ -207,7 +209,7 @@ const DriverOrderPickupCard = ({
               color={theme.primary}
               style={{padding: 3, right: 12}}
             />
-            <AddressText>{'Galle'}</AddressText>
+            <AddressText>{address}</AddressText>
           </DetailContainer>
           <DetailContainer>
             <Icon
@@ -218,7 +220,7 @@ const DriverOrderPickupCard = ({
               style={{padding: 3, right: 11}}
             />
 
-            <UserText>{'Kamal'}</UserText>
+            <UserText>{user}</UserText>
             <RatingContainer>
               <Icon
                 name={'star-o'}
@@ -264,14 +266,6 @@ const DriverOrderPickupCard = ({
               name={'dots-three-vertical'}
               size={20}
               type={'Entypo'}
-              color={theme.darkGray}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Icon
-              name={'star-o'}
-              size={20}
-              type={'FontAwesome'}
               color={theme.darkGray}
             />
           </TouchableOpacity>

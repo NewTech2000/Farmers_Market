@@ -13,6 +13,7 @@ import Routes from '../../../routes/Routes';
 import {getByScreenSize, hdp, wdp} from '../../../utils/responsive';
 import Input from '../../../components/atoms/Input';
 import ErrorText from '../../../components/atoms/errorText/errorText';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 const BackgroundContainer = styled.View`
   padding: 15px;
@@ -96,13 +97,29 @@ const ForgotPassword = ({navigation}) => {
 
   const handleForgotPassword = () => {
     setLoading(true);
-    navigation.navigate(Routes.OTP_VERIFICATION);
+    Toast.show({
+      type: 'success',
+      text1: 'Success',
+      text2: 'Your OTP Code Set To Your Email ',
+      visibilityTime: 4000,
+      autoHide: true,
+      topOffset: 30,
+      bottomOffset: 10,
+      onPress: () => {
+        console.log('Toast message pressed');
+      },
+      onHide: () => {
+        navigation.navigate(Routes.OTP_VERIFICATION);
+      },
+    }),
+  
     setLoading(false);
   };
 
   return (
     <Background>
       <StatusBar backgroundColor="#FFFF" barStyle="dark-content" />
+      <Toast/>
       <ScrollView>
         <BackgroundContainer>
           <Logo source={require('../../../assets/images/App_Logo.png')} />
